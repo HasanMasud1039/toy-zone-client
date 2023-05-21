@@ -7,60 +7,78 @@ import Registration from "../Pages/Registration/Registration";
 import Login from "../Pages/Login/Login";
 import Home from "../Pages/Home/Home/Home";
 import AllToys from "../Pages/Home/AllToys/AllToys";
-import AllToyCard from "../Pages/Home/AllToyCard/AllToyCard";
+// import AllToyCard from "../Pages/Home/AllToyCard/AllToyCard";
 import ToyDetails from "../Pages/Home/ToyDetails/ToyDetails";
+import ShowCardToy from "../Pages/ShowCard/ShowCardToy";
+import AddToy from "../Pages/Home/AddToy/AddToy";
 
 const router = createBrowserRouter([
-    {
-        path: "/",
-        element: <LoginLayout></LoginLayout>,
-        errorElement: <ErrorPage></ErrorPage>,
-        children: [
-          {
-            path: '/',
-            element: <Navigate to={'/home'}></Navigate>
-        },
-          {
-            path: "/login",
-            element: <Login></Login>,
-          },
-          {
-            path: "/register",
-            element: <Registration></Registration>,
-          },
-          {
-            path: '/blog',
-            element: <Blog></Blog>
-        }
-        
-        ],
+  {
+    path: "/",
+    element: <LoginLayout></LoginLayout>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: '/',
+        element: <Navigate to={'/'}></Navigate>
       },
-    {
-      path: "/",
-      element: <Main></Main>,
-      errorElement: <ErrorPage></ErrorPage>,
-      children: [
-        {
-          path: '/home',
-          element: <Home></Home>
-        },
-      ]
-    },
-    {
-      path: '/alltoys',
-      element: <AllToys></AllToys>,
-      loader: ()=> fetch(`http://localhost:5000/toys`),
-      // children: [
-    },
-        {
-          path: 'alltoys/:id',
-          element: <ToyDetails></ToyDetails>,
-          loader: ({params})=> fetch(`http://localhost:5000/toys/${params.id}`)
-        },
-    //   ]
-    // },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/register",
+        element: <Registration></Registration>,
+      },
+      {
+        path: '/blog',
+        element: <Blog></Blog>
+      },
+      {
+        path: '/addtoy',
+        element: <AddToy></AddToy>
+        // children: [
+      },
+      {
+        path: '/alltoys',
+        element: <AllToys></AllToys>,
+        loader: () => fetch(`http://localhost:5000/toys`),
+        // children: [
+      },
+      {
+        path: 'alltoys/:id',
+        element: <ToyDetails></ToyDetails>,
+        loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+      },
 
 
-  ]);
+    ],
+  },
+  {
+    path: "/",
+    element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
+    children: [
+      {
+        path: '/',
+        element: <Home></Home>
+      },
+      {
+        path: '/category/:id',
+        element: <ShowCardToy></ShowCardToy>,
+        loader: ({ params }) => fetch(`http://localhost:5000/toys/category/${params.id}`)
+      },
 
-  export default router;
+
+    ]
+  },
+
+
+
+  //   ]
+  // },
+
+
+]);
+
+export default router;

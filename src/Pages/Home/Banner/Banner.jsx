@@ -1,8 +1,12 @@
 // import React from 'react';
 
+import TabToy from "../../Shared/Navbar/TabToy";
+// import ShowCard from "../../ShowCard/ShowCardToy";
+
 const Banner = () => {
     return (
         <div>
+          {/* <ShowCard></ShowCard> */}
             <div  className="carousel rounded-box  w-full  h-44 border-4 ">
                 <div className="carousel-item  p-4 border-4  w-40 h-40">
                     <img src="https://i.ibb.co/VLsp60L/01ebfef79eeb756d2.jpg" />
