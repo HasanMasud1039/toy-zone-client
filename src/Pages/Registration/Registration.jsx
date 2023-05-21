@@ -1,28 +1,35 @@
 import React, { useContext } from 'react';
-import { Form, Link } from 'react-router-dom';
+import {  Form, Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
+import useTitle from '../../Hook/Hook';
+import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
+import app from '../../Firebase/firebase.config';
+const auth = getAuth(app);
+
 
 const Registration = () => {
     // const { registerUser } = useContext(AuthContext);
-
-    // const handleRegistration = event => {
-    //             event.preventDefault();
-                // const form = event.target;
-                // const name = form.name.value;
-                // const email = form.email.value;
-                // const photo = form.photo.value;
-                // const password = form.password.value;
-                // console.log(email, password);
+    useTitle("Registration");
+    const handleRegistration = event => {
+                event.preventDefault();
+                const form = event.target;
+                const name = form.name.value;
+                const email = form.email.value;
+                const photo = form.photo.value;
+                const password = form.password.value;
+                console.log(email, password);
         
-        //     registerUser(email, password)
-        // .then(result => {
-        //     const createdUser = result.user;
-           
-        // })
-        // .catch(error => {
-        //     console.log(error);
-        // })
-    // }
+            
+        createUserWithEmailAndPassword(auth, email, password)
+        .then(result => {
+            const createdUser = result.user;
+           console.log(createdUser);
+        })
+        .catch(error => {
+            console.log(error.message);
+        })
+        // console.log(registerUser);
+    }
 
 
     return (
@@ -31,7 +38,8 @@ const Registration = () => {
     <div className="text-center lg:text-left">
       <h1 className="text-5xl font-bold">Register now!</h1>
     </div>
-    {/* <form onSubmit={handleRegistration}> */}
+    {/* <form> */}
+    <form onSubmit={handleRegistration}>
     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
       <div className="card-body">
         <div className="form-control">
@@ -62,13 +70,21 @@ const Registration = () => {
                                 <button className="btn btn-primary">Register</button>
                             </div>
         <label className="label">
-            <span className="label-text text-lg">Already have an account? <Link to='/login'><span className="text-blue-600">Login</span></Link></span>
+            <span className="label-text text-lg">Already have an account? 
+            <Link to='/login'><span className="text-blue-600">Login</span></Link></span>
                                 </label>
       </div>
 
     </div>
-    {/* </form> */}
+    </form>
   </div>
+
+  {/* <Form >
+
+                <Form.Group className="mb-3" controlId="formBasicName">
+                    <Form.Label>Name</Form.Label>         
+                </Form.Group>
+</Form> */}
 </div>
     );
 };

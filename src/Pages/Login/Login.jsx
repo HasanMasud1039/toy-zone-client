@@ -6,6 +6,7 @@ import { Form, Link, useLocation, useNavigate } from "react-router-dom";
 import app from "../../Firebase/firebase.config";
 import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { AuthContext } from "../../Providers/AuthProvider";
+import useTitle from "../../Hook/Hook";
 
 
 const Login = () => {
@@ -18,7 +19,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
-
+    useTitle("Login");
     const handleLogin = event => {
         event.preventDefault();
         const form = event.target;
@@ -31,10 +32,11 @@ const Login = () => {
                 navigate(from, { replace: true })
             })
             .catch(error => {
-                console.log(error);
+                console.log(error.message);
             })
     }
     const handleGoogleSignIn = () => {
+ 
         signInWithPopup(auth, googleProvider)
             .then(result => {
                 const loggedInUser = result.user;

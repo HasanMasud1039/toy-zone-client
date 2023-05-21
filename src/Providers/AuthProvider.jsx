@@ -2,6 +2,7 @@
 /* eslint-disable no-unused-vars */
 import React from "react";
 import { createContext } from "react";
+import { setUserId } from "firebase/analytics";
 import {
   getAuth,
   createUserWithEmailAndPassword,
