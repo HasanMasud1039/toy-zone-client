@@ -11,10 +11,10 @@ const ShowCardToy = () => {
     //  )
 
     return (
-        <div className="d-flex p-8">
-            <Tabs className="border-0 shadow-2xl">
+        <div className="p-8">
+            <Tabs className="border-0  bg-lime-200 rounded-lg shadow-2xl">
  
-            <div className="w-68 bg-red-50 space-x-2 border-2 border-orange-500">
+            <div style={{display: 'grid', gridTemplateColumns:'1fr 1fr' }}  className="mx-auto">
                 {
                     categoryToys.map(categoryToy =>
                         <TabToy key={categoryToy.id} categoryToy={categoryToy}></TabToy>

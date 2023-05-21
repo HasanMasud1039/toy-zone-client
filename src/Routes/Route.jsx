@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Navigate to={'/'}></Navigate>
+        element: <Navigate to={'/home'}></Navigate>
       },
       {
         path: "/login",
@@ -37,19 +37,17 @@ const router = createBrowserRouter([
       {
         path: '/addtoy',
         element: <AddToy></AddToy>
-        // children: [
       },
       {
         path: '/alltoys',
         element: <AllToys></AllToys>,
         loader: () => fetch(`http://localhost:5000/toys`),
-        // children: [
       },
       {
         path: 'alltoys/:id',
         element: <ToyDetails></ToyDetails>,
         loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
-      },
+      }
 
 
     ],
@@ -60,23 +58,19 @@ const router = createBrowserRouter([
     errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
-        path: '/',
+        path: '/home',
         element: <Home></Home>
       },
       {
         path: '/category/:id',
         element: <ShowCardToy></ShowCardToy>,
         loader: ({ params }) => fetch(`http://localhost:5000/toys/category/${params.id}`)
-      },
+      }
 
 
     ]
   },
 
-
-
-  //   ]
-  // },
 
 
 ]);

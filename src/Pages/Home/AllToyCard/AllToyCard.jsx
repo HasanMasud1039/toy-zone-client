@@ -8,16 +8,6 @@ const AllToyCard = ({ toy }) => {
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
-            
-                {/* <thead>
-                    <tr>
-                        <th>Toy</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                        <th>Seller</th>
-                        <th></th>
-                    </tr>
-                </thead> */}
                 <tbody>
                     
                     {/* row 1 */}

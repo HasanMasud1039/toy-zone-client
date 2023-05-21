@@ -10,8 +10,8 @@ import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
     // const [user, setUser] = useState(null);
-        const user = {email: 'aa@aa.aa', password: 'aaaaaa'};
-        const loginUser = {email: 'aa@aa.aa', password: 'aaaaaa'};
+    const user = { email: 'aa@aa.aa', password: 'aaaaaa' };
+    const loginUser = { email: 'aa@aa.aa', password: 'aaaaaa' };
     const auth = getAuth(app);
     const googleProvider = new GoogleAuthProvider();
     // const { loginUser } = useContext(AuthContext);
@@ -48,37 +48,53 @@ const Login = () => {
 
 
     return (
+        <div>
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col  space-y-8">
+                    <div className="text-center lg:text-left">
+                        <h1 className="text-5xl font-bold">Login now!</h1>
 
-        <div className='mx-auto my-4 w-50'>
-            <h3>Please Login</h3>
-            <form onSubmit={handleLogin}>
-                <div className="mb-3">
-                    Email Address
-                    <form required type="email" name="email" placeholder="Enter email" />
-                </div>
-                <div className="mb-3">
-                    Password
-                    <form required type="password" name="password" placeholder="Password" />
-                </div>
-                <button type="submit">
-                    Login
-                </button>
-                <br />
-                <p className=" mt-4 text-secondary">Dont have an account?
-                    <Link to="/register">  Register</Link>
-                </p>
-            </form>
-            <div>
-                <div className="">
-                    <img
-                        onClick={handleGoogleSignIn}
-                        className=" social-button"
-                        src="https://i.ibb.co/gSTHXZJ/google-btn.png"
-                        alt=""
-                    />
+                    </div>
+                    <div className="card w-full max-w-sm shadow-2xl bg-base-100">
+                        <div className="card-body">
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Email</span>
+                                </label>
+                                <input type="text" placeholder="email" className="input input-bordered" />
+                            </div>
+                            <div className="form-control">
+                                <label className="label">
+                                    <span className="label-text">Password</span>
+                                </label>
+                                <input type="text" placeholder="Password" className="input input-bordered" />
+        
+                            </div>
+                            <div className="form-control mt-6">
+                                <button className="btn btn-primary">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="w-56  border-2">
+                        <img
+                            onClick={handleGoogleSignIn}
+                            className=" social-button"
+                            src="https://i.ibb.co/gSTHXZJ/google-btn.png"
+                            alt=""
+                        />
+                    </div>
+                    <label className="label">
+                                    <span className="label-text text-lg">Do not have an account? <Link to='/register'><span className="text-blue-600">Register</span></Link></span>
+                                </label>
                 </div>
             </div>
         </div>
+
+
+
+
+
+
     );
 };
 

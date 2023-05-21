@@ -19,7 +19,7 @@ const ToyDetails = () => {
       <p>Rating:  {toyDetail.rating}</p>
       <p>Seller Name:  {toyDetail.sellerName}</p>
       <p>Seller Email:  {toyDetail.sellerEmail}</p>
-      <button className="btn btn-primary">Get Started</button>
+      {/* <button className="btn btn-primary">Get Started</button> */}
     </div>
   </div>
 </div>

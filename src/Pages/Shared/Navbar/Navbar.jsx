@@ -129,44 +129,10 @@ const Navbar = () => {
                         <Tab><Link to='/category/600'>Limo Car</Link></Tab>
                     </TabList>
                 </Tab>
-                {/* <TabToy></TabToy> */}
-                {/* <Tabs className="border-4">
-                    <TabList className="d-flex me-8">
-                        <Tab><Link to='/category/100'>Sports Car</Link></Tab>
-                        <Tab><Link to='/category/300'>Truck</Link></Tab>
-                        <Tab><Link to='/category/200'>Regular Car</Link></Tab>
-                        <Tab><Link to='/category/400'>Mini Fire Truck</Link></Tab>
-                        <Tab><Link to='/category/500'>Mini Police Car</Link></Tab>
-                        <Tab><Link to='/category/600'>Limo Car</Link></Tab>
-                    </TabList>
-
-                    <TabPanel>
-                   <ShowCard></ShowCard> 
-                    </TabPanel>
-                    <TabPanel>
-                        <ShowCard></ShowCard> 
-                    </TabPanel>
-                    <TabPanel>
-                        <p>
-                            <b>Mario3</b>
-                        </p>
-                    </TabPanel>
-                    <TabPanel>
-                        <p>
-                            <b>Mario4</b>
-                        </p>
-                    </TabPanel>
-                    <TabPanel>
-                        <p>
-                            <b>Mario5</b>
-                        </p>
-                    </TabPanel>
-
-                </Tabs> */}
+              
             </div>
         </div>
     );
-    // render(Component);
 };
 
 
