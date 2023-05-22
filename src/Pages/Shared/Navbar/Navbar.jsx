@@ -12,8 +12,8 @@ import TabToy from './TabToy';
 const Navbar = () => {
 
 
-    // const { user, logOut } = useContext(AuthContext);
-    const user = { email: 'aa@aa.aa', password: 'aaaaaa' };
+    const { user, logOut } = useContext(AuthContext);
+    // const user = { email: 'aa@aa.aa', password: 'aaaaaa' };
     // console.log(user?.email);
     const handleLogout = () => {
         logOut()
@@ -22,48 +22,9 @@ const Navbar = () => {
                 console.log(err);
             });
     };
-    // const Component = (<Tabs className="border-4">
-    //     <TabList className="d-flex me-8">
-    //         {/* <Tab>Sports Car</Tab>
-    //         <Tab>Truck</Tab>
-    //         <Tab>Regular Car</Tab>
-    //         <Tab>Mini Fire Truck</Tab>
-    //         <Tab>Mini Police Car</Tab>
-    //         <Tab>Limo Car</Tab> */}
-    //         <Tab><Link to='/category/100'>Sports Car</Link></Tab>
-    //         <Tab><Link to='/category/300'>Truck</Link></Tab>
-    //         <Tab><Link to='/category/200'>Regular Car</Link></Tab>
-    //         <Tab><Link to='/category/400'>Mini Fire Truck</Link></Tab>
-    //         <Tab><Link to='/category/500'>Mini Police Car</Link></Tab>
-    //         <Tab><Link to='/category/600'>Limo Car</Link></Tab>
-    //     </TabList>
-
-    //     <TabPanel>
-    //         <p>
-
-    //         </p>
-    //     </TabPanel>
-    //     <TabPanel>
-    //         {/* <ShowCard></ShowCard> */}
-    //     </TabPanel>
-    //     <TabPanel>
-    //         <p>
-    //             <b>Mario3</b>
-    //         </p>
-    //     </TabPanel>
-    //     <TabPanel>
-    //         <p>
-    //             <b>Mario4</b>
-    //         </p>
-    //     </TabPanel>
-    //     <TabPanel>
-    //         <p>
-    //             <b>Mario5</b>
-    //         </p>
-    //     </TabPanel>
-
-    // </Tabs>)
-
+    const userLogin = JSON.parse(localStorage.getItem('user'));
+    // const {displayName, photoURL} = userLogin;
+    console.log(userLogin);
     return (
         <div>
 
@@ -104,23 +65,29 @@ const Navbar = () => {
                         {user?.email ? (
                             <li>
                                 {/* <button onClick={handleLogout}>Logout</button> */}
-                                <button className="btn mx-2" onClick={handleLogout} >Logout</button>
+                                <Link to='/myToys'><button className='btn bg-cyan-300 rounded-2xl text-red-700 font-bold me-8'>My Toys</button></Link>
+                                <button className="btn bg-cyan-300 rounded-2xl text-red-700 font-bold mx-2" onClick={handleLogout} >Logout</button>
                             </li>
                         ) : (
                             <Link to="/login">
-                                <button className="btn mx-2" >Login</button>
+                                <button className="btn bg-cyan-300 rounded-2xl text-red-700 font-bold mx-2" >Login</button>
                             </Link>
                         )}
 
                     </div>
-                    <div className="navbar-end  pe-8">
-                        <FaUserCircle className='border border-4 w-[60px] h-[60px]'></FaUserCircle>
-                    </div>
+                    {user?.email ? ( 
+                        <div className="navbar-end  pe-8">
+                            <p>{userLogin.displayName}</p>
+                            {/* <FaUserCircle className='border border-4 w-[60px] h-[60px]'></FaUserCircle> */}
+                            <img src={userLogin.photoURL} className='border border-2 rounded-full ms-4 w-[60px] h-[60px]' />
+                        </div>
+                            ) : <></>
+                    }
                 </div>
             </div>
             <div>
                 <Tab>
-                <TabList className="d-flex me-8">
+                    <TabList className="d-flex me-8">
                         <Tab><Link to='/category/100'>Sports Car</Link></Tab>
                         <Tab><Link to='/category/300'>Truck</Link></Tab>
                         <Tab><Link to='/category/200'>Regular Car</Link></Tab>
@@ -129,7 +96,7 @@ const Navbar = () => {
                         <Tab><Link to='/category/600'>Limo Car</Link></Tab>
                     </TabList>
                 </Tab>
-              
+
             </div>
         </div>
     );
