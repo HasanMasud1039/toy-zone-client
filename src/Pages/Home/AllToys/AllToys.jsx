@@ -10,9 +10,10 @@ const AllToys = () => {
             <table className="table w-full">
             <thead>
                     <tr>
-                        <th className="w-[35%] text-lg text-center">Toy</th>
-                        <th className="w-[15%] text-lg text-center">Price</th>
+                        <th className="w-[30%] text-lg text-center">Toy</th>
+                        <th className="w-[12%] text-lg text-center">Price</th>
                         <th className="w-[12%] text-lg text-center">Quantity</th>
+                        <th className="w-[12%] text-lg text-center">Rating</th>
                         <th className="w-[24%] text-lg text-center">Seller</th>
                         <th></th>
                     </tr>
