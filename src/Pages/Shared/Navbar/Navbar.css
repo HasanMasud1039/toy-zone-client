@@ -1,0 +1,11 @@
+.navbar{
+    /* background: (rgba(244, 146, 146, 0.527) url('../../../assets/111.jpg')); */
+    background-image: url('../../../assets/111.jpg');
+    background-color: rgb(162, 120, 120);
+    background-blend-mode: multiply;
+
+
+}
+.toy{
+    background-color: rgb(158, 250, 219);
+}

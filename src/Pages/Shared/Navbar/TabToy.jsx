@@ -1,19 +1,20 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom';
-import { Tab, TabList, TabPanel, Tabs } from "react-tabs";
+import {  TabPanel, Tabs } from "react-tabs";
 import 'react-tabs/style/react-tabs.css';
-import ShowCard from '../../ShowCard/ShowCardToy';
-const TabToy = ({ categoryToy }) => {
-    // console.log("cat", categoryToy);
+
+
+
+const TabToy = ({ categoryToy}) => {
+
     const { id, picture, name, price, rating, details, subCategory, sellerName, sellerEmail, quantity } = categoryToy;
-
-
 
 
     return (
         <div  className=' w-[95%] m-6rounded-lg  '>
             <div >
-                <Tabs  className="p-6  ">
+                <Tabs  className="p-6" >
+                    
 
                     <TabPanel  className="border-1">
                         <div className="card bg-base-100  h-[90%]  shadow-xl">

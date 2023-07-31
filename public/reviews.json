@@ -1,0 +1,26 @@
+[
+    {
+        "_id": 1,
+        "name": "Mehedi Hasan",
+        "details": "Absolutely loved the toy selection! My kids couldn't be happier with their new toys. The website was easy to navigate, and the delivery was super fast. Highly recommend!",
+        "rating": 4
+    },
+    {
+        "_id": 2,
+        "name": "Hasan Masud",
+        "details": "Fantastic experience shopping on this toy website. The toys are of great quality and reasonably priced. The checkout process was a breeze, and the customer service was top-notch. Will be coming back for more!",
+        "rating": 4
+    },
+    {
+        "_id": 3,
+        "name": "Hasan Murad",
+        "details": "Impressive toy website! The interactive toys and educational games they offer are just what I was looking for to keep my kids engaged. The packaging was secure, and the toys arrived in perfect condition.",
+        "rating": 5
+    },
+    {
+        "_id": 4,
+        "name": "Masud Hasan",
+        "details": "Excellent toy shopping destination! The website's layout is user-friendly, making it simple to find the perfect toy for any occasion. I appreciate the frequent discounts and deals too, which makes the prices even more attractive.",
+        "rating": 3
+    }
+]

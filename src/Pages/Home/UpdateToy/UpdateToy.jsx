@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 const UpdateToy = () => {
     const toy = useLoaderData();
     const { _id, name, subCategory, picture, price, rating, quantity, details ,sellerName, sellerEmail } = toy;
+    const userEmail = localStorage.getItem('user')
 
     const handleUpdateToy = event =>{
         event.preventDefault();

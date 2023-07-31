@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const AllToyCard = ({ toy }) => {
     console.log(toy);
-    const {id, picture, name, price, rating, subCategory, sellerName, sellerEmail, quantity } = toy;
+    const {_id, picture, name, price, rating, subCategory, sellerName, sellerEmail, quantity } = toy;
     return (
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
@@ -26,7 +26,7 @@ const AllToyCard = ({ toy }) => {
                             </div>
                         </td>
                         <td className="shadow-lime-300 my-8 border-0 w-[12%] bg-cyan-200">
-                            {price}  
+                            $ {price}  
                         </td>
                         <td className="shadow-lime-300 my-8 border-0 w-[12%] bg-cyan-200">
                             {quantity}
@@ -36,7 +36,7 @@ const AllToyCard = ({ toy }) => {
                         </td>
                         <td className="shadow-lime-300 my-8 border-0 w-[24%] bg-cyan-200"><a href={sellerEmail}>{sellerName}</a></td>
                         <th className=" bg-cyan-200 w-20">
-                            <button className="btn btn-error text-white "><Link to={`/alltoys/${id}`}>Details</Link></button>
+                            <button className="btn btn-error text-white "><Link to={`/alltoys/${_id}`}>Details</Link></button>
                         </th>
                     </tr>
                     {/* row 2 */}

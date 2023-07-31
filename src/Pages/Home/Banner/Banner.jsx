@@ -59,33 +59,9 @@ const Banner = () => {
         {description}
       </div>
 
+
     </div>
-    // {/* <div  className="carousel rounded-box  w-full  h-44 border-4 ">
-    //     <div className="carousel-item  p-4 border-4  w-40 h-40">
-    //         <img src="https://i.ibb.co/VLsp60L/01ebfef79eeb756d2.jpg" />
-    //     </div>
-    //     <div className="carousel-item p-4 border-4 w-40 h-40">
-    //         <img src="https://i.ibb.co/9Z5mw0c/602-1477-scaled.jpg" />
-    //     </div>
-    //     <div className="carousel-item p-4 border-4 w-40 h-40">
-    //         <img src="https://i.ibb.co/vDhHr6N/images-2.jpg" />
-    //     </div>
-    //     <div className="carousel-item  p-4 border-4 w-40 h-40">
-    //         <img src="https://i.ibb.co/QYtKddk/GUEST-26037c93-48fd-423f-80c7-11b193427146.jpg" />
-    //     </div>
-    //     <div className="carousel-item p-4 border-4 w  w-40 h-40">
-    //         <img src="https://i.ibb.co/wpXZfkL/51v8-qn-D32-L.jpg" />
-    //     </div>
-    //     <div className="carousel-item p-4 border-4 w-40 h-40">
-    //         <img src="https://i.ibb.co/8jc56jR/51ye5-E5o-ZDL-SL1000.jpg" />
-    //     </div>
-    //     <div className="carousel-item w-40  p-4 border-4 h-40">
-    //         <img src="https://i.ibb.co/93VfCjk/1.jpg" />
-    //     </div>
-    // </div> */}
-
-
-    // </div>
+   
   );
 };
 

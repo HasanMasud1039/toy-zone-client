@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { AuthContext } from '../../../Providers/AuthProvider';
 
 const AddToy = () => {
+    const {user} = useContext(AuthContext);
+    const {navigate} = useNavigate();
     const handleAddToy = event => {
         event.preventDefault();
         const form = event.target;
@@ -25,7 +29,7 @@ const AddToy = () => {
 
         const newAddedToy = {name, picture,category_id, subCategory, price, rating, sellerEmail, sellerName, quantity, details};
         console.log(newAddedToy);
-        fetch(`http://localhost:5000/toys/`, {
+        fetch(`http://localhost:5000/toys`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -35,15 +39,16 @@ const AddToy = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
-            if(data.insertedID){
+ 
                 Swal.fire({
                     title: 'Success!',
                     text: 'Toy added successfully',
                     icon: 'success',
                     confirmButtonText: 'Cool'
                   })
-            }
+            
         })
+        navigate('/');
     }
 
     return (
@@ -112,13 +117,13 @@ const AddToy = () => {
                                 <label className="label">
                                     <span className="label-text">Seller Name</span>
                                 </label>
-                                <input type="text" placeholder="Seller Name" name='seller_name' className="input input-bordered" />
+                                <input type="text" placeholder={user?.displayName} name='seller_name' className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Seller Email</span>
                                 </label>
-                                <input type="email" placeholder="Seller Email" name='seller_email' className="input input-bordered" />
+                                <input type="email" placeholder={user.email} name='seller_email' className="input input-bordered" />
                             </div>
                             <div className="form-control">
                                 <label className="label">
