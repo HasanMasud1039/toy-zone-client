@@ -6,15 +6,18 @@ import AllToyCard from "../AllToyCard/AllToyCard";
 const AllToys = () => {
     const toys = useLoaderData();
     return (
-        <div className="p-8 overflow-x-auto w-full text-lg">
+        <div className="p-8 bg-gradient-to-r from-cyan-200 to-purple-200 overflow-x-auto w-full text-lg">
+            <div>
+                
+            </div>
             <table className="table w-full">
             <thead>
-                    <tr>
-                        <th className="w-[30%] text-lg text-center">Toy</th>
-                        <th className="w-[12%] text-lg text-center">Price</th>
-                        <th className="w-[12%] text-lg text-center">Quantity</th>
-                        <th className="w-[12%] text-lg text-center">Rating</th>
-                        <th className="w-[24%] text-lg text-center">Seller</th>
+                    <tr className="font-serif">
+                        <th className="w-[30%]  text-xl text-center">Toy</th>
+                        <th className="w-[12%] text-xl text-center">Price</th>
+                        <th className="w-[12%] text-xl text-center">Quantity</th>
+                        <th className="w-[12%] text-xl text-center">Rating</th>
+                        <th className="w-[24%] text-xl text-center">Seller</th>
                         <th></th>
                     </tr>
                 </thead>

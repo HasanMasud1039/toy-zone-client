@@ -47,17 +47,17 @@ const router = createBrowserRouter([
       {
         path: '/mytoy/:email',
         element: <MyToy></MyToy>,
-        loader: ({params}) => fetch(`http://localhost:5000/mytoys/${params.email}`),
+        loader: ({params}) => fetch(`https://toy-zone-server-hasanmasud1039.vercel.app/mytoys/${params.email}`),
       },
       {
         path: '/alltoys',
         element: <AllToys></AllToys>,
-        loader: () => fetch(`http://localhost:5000/toys`),
+        loader: () => fetch(`https://toy-zone-server-hasanmasud1039.vercel.app/toys`),
       },
       {
         path: 'alltoys/:id',
         element: <ToyDetails></ToyDetails>,
-        loader: ({ params }) => fetch(`http://localhost:5000/toys/${params.id}`)
+        loader: ({ params }) => fetch(`https://toy-zone-server-hasanmasud1039.vercel.app/toys/${params.id}`)
       }
 
 
@@ -75,7 +75,7 @@ const router = createBrowserRouter([
       {
         path: '/category/:category',
         element: <ShowCardToy></ShowCardToy>,
-        loader: ({ params }) => fetch(`http://localhost:5000/category/${params.category}`)
+        loader: ({ params }) => fetch(`https://toy-zone-server-hasanmasud1039.vercel.app/category/${params.category}`)
       }
 
 

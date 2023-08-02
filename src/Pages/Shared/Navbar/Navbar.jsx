@@ -37,7 +37,7 @@ const Navbar = () => {
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                             </label>
-                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
+                            <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-slate-600 rounded-box w-52">
                                 <li className='font-semibold font-serif '><Link to='/'>Home</Link></li>
                                 <li className='font-semibold font-serif '><Link to='/alltoys'>All Toys</Link></li>
                                 <li className='font-semibold font-serif '><Link to='/addtoy'>Add Toy</Link></li>
@@ -55,7 +55,9 @@ const Navbar = () => {
                         </div>
                         <div className='lg:w-[70%] md:w-[89%] ms-4  flex' >
                             <div><img className='align-center w-[50%]   rounded-full border-2 border-red-200 shadow-lg' src={logo} /></div>
-                            <div className='w-64'><h4 className='toy border-2 w-[120%]  shadow-2xl rounded-lg text-center p-4 font-serif border-sky-100 text-3xl  font-bold text-red-600'>Toy Zone</h4></div>
+                            <div className='w-60'><h4 className='toy border-1  shadow-2xl rounded-lg text-center  font-serif border-sky-100'>Toy Zone</h4>
+                            
+                            </div>
                         </div>
                     </div>
                     <div className="navbar-center  space-x-8 hidden lg:flex">
@@ -74,7 +76,7 @@ const Navbar = () => {
                             </div>
                         ) : (
                             <Link to="/login">
-                                <button className="text-lg font-semibold font-serif  rounded-2xl text-red-700  me-8 btn-red-outline" >Login</button>
+                                <button className="text-xl font-semibold font-serif  rounded-2xl text-lime-400  me-8 btn-red-outline" >Login</button>
                             </Link>
                         )}
 

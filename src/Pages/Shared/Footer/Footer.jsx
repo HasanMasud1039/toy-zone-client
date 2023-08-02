@@ -7,12 +7,12 @@ const Footer = () => {
     return (
 
         <footer>
-            <div className="footer p-10 bg-neutral text-neutral-content">
+            <div className="footer text-lg p-10 bg-neutral text-neutral-content">
                 <div className='text-center  space-y-2'>
                     <img src={logo} className="mx-auto w-24 rounded-full" alt="" />
                     <div>
-                    <p>Toy Zone</p>
-                    <p>We provide the best toys!</p>
+                        <p className='text-2xl mb-4 font-serif font-bold text-yellow-400'>Toy Zone</p>
+                        <p>We provide the best toys!</p>
                     </div>
                 </div>
                 <div>
@@ -22,7 +22,7 @@ const Footer = () => {
                         <Link to='https://www.youtube.com'><FaYoutube className='text-red-600 h-8 w-8'></FaYoutube></Link>
                         <Link to='https://www.twitter.com'><FaTwitter className='text-blue-400 h-8 w-8'></FaTwitter></Link>
                         <Link to='https://www.instagram.com'><FaInstagram className='text-red-400  w-8 h-8 '></FaInstagram></Link>
-                                         
+
                     </div>
                 </div>
                 <div>
@@ -39,7 +39,7 @@ const Footer = () => {
             </div>
             <div className="footer footer-center p-4 bg-base-300 text-base-content">
                 <div>
-                    <p>Copyright © 2023 - All right reserved by Hasan Masud</p>
+                    <p>Copyright © 2023 - All rights reserved by Hasan Masud</p>
                 </div>
             </div>
         </footer>

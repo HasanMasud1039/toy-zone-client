@@ -1,11 +1,23 @@
 // import React from 'react';
 
+import { FaDownload } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router-dom";
+import PdfViewer from "../../PDFDownload/PDFViewer";
+import { PDFDownloadLink } from "@react-pdf/renderer";
 
 const ToyDetails = () => {
   const toyDetail = useLoaderData();
   const id = useParams();
-  console.log(id, toyDetail)
+  // console.log(id, toyDetail);
+
+  const handlePDF = () =>{
+    console.log(id);
+    // <PdfViewer toyDetail={toyDetail} id={id}></PdfViewer>
+    <PDFDownloadLink document={<PdfViewer toyDetail={toyDetail} ></PdfViewer>} fileName="FORM">
+      {({loading}) => (loading ? 'Loadimg Document...' : <button>DOWNLOAD</button>)}
+    </PDFDownloadLink>
+  }
+
   return (
     <div>
       <div className="hero min-h-screen bg-base-100">
@@ -19,7 +31,8 @@ const ToyDetails = () => {
             <p className="py-2  font-semibold">Rating:  <span className="text-red-700">{toyDetail.rating}</span></p>
             <p className="py-2  font-semibold">Seller Name:  <span className="text-red-700">{toyDetail.sellerName}</span></p>
             <p className="py-2  font-semibold">Seller Email:  <span className="text-red-700">  {toyDetail.sellerEmail}</span></p>
-            {/* <button className="btn btn-primary">Get Started</button> */}
+          <div className="mt-6 flex justify-center"><button  className="btn btn-error gap-4"><FaDownload></FaDownload> Download Details as PDF</button></div>
+         { handlePDF()}
           </div>
         </div>
       </div>

@@ -39,7 +39,7 @@ const Registration = () => {
 
 
   return (
-    <div className="hero min-h-screen bg-base-200">
+    <div className="hero min-h-screen bg-gradient-to-b to-slate-800 from-cyan-400">
       <div className="hero-content flex-col space-y-8">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register now!</h1>
@@ -75,9 +75,9 @@ const Registration = () => {
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
               </div>
-              <label className="label">
+              <label className="label font-bold">
                 <span className="label-text text-lg">Already have an account?
-                  <Link to='/login'><span className="text-blue-600">Login</span></Link></span>
+                  <Link to='/login'><span className="ms-2 text-xl text-blue-600">Login</span></Link></span>
               </label>
             </div>
           </div>

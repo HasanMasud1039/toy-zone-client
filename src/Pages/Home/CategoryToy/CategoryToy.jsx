@@ -11,7 +11,7 @@ const CategoryToy = (params) => {
     console.log(params)
 
     return (
-        <div className='py-2 text-xl bg-gradient-to-b from-yellow-100 to-red-200 '> 
+        <div className='py-2 text-xl bg-gradient-to-b from-lime-400 to-red-200 '> 
             {/* <h3 className='uppercase pt-4 ps-4 font-bold text-red-900'>sub-categories: </h3> */}
             {/* <p className="text-center">Explore Our Collection</p> */}
             <h1 className="text-center text-xl my-4 w-4/12 mx-auto font-bold text-orange-500 uppercase border-y-4 py-4">Explore Our Collection</h1>

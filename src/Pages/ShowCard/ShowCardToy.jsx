@@ -13,7 +13,7 @@ const ShowCardToy = () => {
 
 
     return (
-        <div className="p-8">
+        <div className="py-8">
 
            <div hidden> <CategoryToy params={params}></CategoryToy></div>
             <Tabs className="border-0  bg-lime-200 rounded-lg shadow-2xl">

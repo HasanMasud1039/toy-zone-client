@@ -1,11 +1,26 @@
 .navbar{
     /* background: (rgba(244, 146, 146, 0.527) url('../../../assets/111.jpg')); */
     background-image: url('../../../assets/111.jpg');
-    background-color: rgb(162, 120, 120);
+    background-color: rgb(123, 49, 49);
     background-blend-mode: multiply;
 
 
+color: rgb(157, 255, 0);
+
 }
 .toy{
-    background-color: rgb(158, 250, 219);
+    background-color: rgba(63, 1, 11, 0.82);
+    background-image: url('../../../assets/222.webp');
+    background-repeat: repeat-x;
+    background-size: contain;
+    background-position: center;
+    padding-bottom: 20px;
+    padding-top: 50px;
+    background-blend-mode: multiply;
+    font-size: xx-large;
+    font-weight: 700;
+    font-style: oblique;
+    color: rgb(243, 255, 20);
+    
+
 }

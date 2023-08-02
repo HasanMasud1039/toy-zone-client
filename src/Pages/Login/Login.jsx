@@ -59,9 +59,9 @@ const Login = () => {
 
 
     return (
-        <div>
-            <div className="hero min-h-screen bg-base-200">
-                <div className="hero-content flex-col  space-y-8">
+        <div className="bg-gradient-to-b to-slate-800 from-cyan-400">
+            <div className="hero ">
+                <div className="hero-content flex-col  space-y-4">
                     <div className="text-center lg:text-left">
                         <h1 className="text-5xl font-bold">Login now!</h1>
                     </div>
@@ -97,8 +97,8 @@ const Login = () => {
                         />
                     </div>
                     <label className="label">
-                        <span className="label-text text-lg">Do not have an account? <Link to='/register'>
-                            <span className="text-blue-600">Register</span></Link></span>
+                        <span className="label-text text-white text-xl">Do not have an account? <Link to='/register'>
+                            <span className="font-bold text-xl text-blue-400">Register</span></Link></span>
                     </label>
                 </div>
                 <ToastContainer
