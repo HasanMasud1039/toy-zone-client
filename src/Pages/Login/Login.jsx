@@ -59,7 +59,7 @@ const Login = () => {
 
 
     return (
-        <div className="bg-gradient-to-b to-slate-800 from-cyan-400">
+        <div className="bg-gradient-to-b to-slate-400 from-cyan-100">
             <div className="hero ">
                 <div className="hero-content flex-col  space-y-4">
                     <div className="text-center lg:text-left">
@@ -98,7 +98,7 @@ const Login = () => {
                     </div>
                     <label className="label">
                         <span className="label-text text-white text-xl">Do not have an account? <Link to='/register'>
-                            <span className="font-bold text-xl text-blue-400">Register</span></Link></span>
+                            <span className="font-bold text-xl text-blue-800">Register</span></Link></span>
                     </label>
                 </div>
                 <ToastContainer

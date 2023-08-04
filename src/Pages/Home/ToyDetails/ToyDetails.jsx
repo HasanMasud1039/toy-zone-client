@@ -21,9 +21,9 @@ const ToyDetails = () => {
   return (
     <div>
       <div className="hero min-h-screen bg-base-100">
-        <div className="hero-content bg-yellow-100 rounded-lg flex-col me-8 lg:flex-row">
+        <div className="hero-content  rounded-lg flex-col me-8 lg:flex-row">
           <img src={toyDetail.picture} className="max-w-sm rounded-lg shadow-2xl" />
-          <div className="p-8 border-2 space-y-2 bg-cyan-200 rounded-xl font-serif shadow-red-400 shadow-lg">
+          <div className="p-8 border-2 space-y-2 bg-cyan-50 rounded-xl font-serif shadow-red-400 shadow-lg">
             <h1 className="text-5xl text-red-800 font-bold text-center mb-8">{toyDetail.name}</h1>
             <p className="py-2 text-amber-700 font-semibold">{toyDetail.details}</p>
             <p className="py-2  font-semibold">Price: <span className="text-red-700">   $ {toyDetail.price}</span></p>

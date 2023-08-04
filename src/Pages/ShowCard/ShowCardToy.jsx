@@ -15,13 +15,13 @@ const ShowCardToy = () => {
     return (
         <div className="py-8">
 
-           <div hidden> <CategoryToy params={params}></CategoryToy></div>
-            <Tabs className="border-0  bg-lime-200 rounded-lg shadow-2xl">
+           <div hidden> <CategoryToy key={params} params={params} categoryToys={categoryToys}></CategoryToy></div>
+            <Tabs className="border-0   rounded-lg shadow-2xl">
 
-                <div style={{  display: 'grid', gridTemplateColumns: '1fr 1fr' }} className="mx-auto">
+                <div style={{  gridTemplateColumns: '1fr 1fr 1fr' }} className=" mx-auto md:grid">
                     {
                         categoryToys.map(categoryToy =>
-                            <TabToy key={categoryToy.id} categoryToy={categoryToy} ></TabToy>
+                            <TabToy key={categoryToy._id} categoryToy={categoryToy} ></TabToy>
 
                         )}
 

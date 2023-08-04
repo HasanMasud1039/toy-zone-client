@@ -11,8 +11,8 @@ const AllToyCard = ({ toy }) => {
                 <tbody>
                     
                     {/* row 1 */}
-                    <tr className="border-2 font-bold font-lg text-center">
-                        <td className="shadow-lime-300 my-8 border-0 bg-gradient-to-r from-red-300 to-lime-300 w-[30%]">
+                    <tr className="border-2 font-bold md:font-lg text-center">
+                        <td className="shadow-lime-300 my-8 border-0 bg-gradient-to-r from-red-200 to-lime-50 w-[30%]">
                             <div className="flex items-center space-x-3">
                                 <div className="avatar me-8">
                                     <div className="mask mask-squircle w-[90px] h-24">
@@ -25,17 +25,17 @@ const AllToyCard = ({ toy }) => {
                                 </div>
                             </div>
                         </td>
-                        <td className="shadow-lime-300 my-8 border-0 w-[12%] bg-gradient-to-r to-red-200 from-lime-300">
+                        <td className="shadow-lime-300 my-8 border-0 w-[12%]">
                             $ {price}  
                         </td>
-                        <td className="shadow-lime-300 my-8 border-0 w-[12%] bg-gradient-to-r from-red-200 to-lime-300">
+                        <td className="shadow-lime-300 my-8 border-0 w-[12%] ">
                             {quantity}
                         </td>
-                        <td className="shadow-lime-300 my-8 border-0 w-[12%] bg-gradient-to-r to-red-200 from-lime-300">
+                        <td className="shadow-lime-300 my-8 border-0 w-[12%]">
                             {rating}
                         </td>
-                        <td className="shadow-lime-300 my-8 border-0 w-[24%] bg-gradient-to-r from-red-200 to-lime-300"><a href={sellerEmail}>{sellerName}</a></td>
-                        <th className=" bg-gradient-to-r to-red-200 from-lime-300 w-20">
+                        <td className="shadow-lime-300 my-8 border-0 w-[24%] "><a href={sellerEmail}>{sellerName}</a></td>
+                        <th className=" w-20">
                             <button className="btn btn-error text-white "><Link to={`/alltoys/${_id}`}>Details</Link></button>
                         </th>
                     </tr>
