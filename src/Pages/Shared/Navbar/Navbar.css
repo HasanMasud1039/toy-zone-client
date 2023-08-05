@@ -1,16 +1,11 @@
 .navbar{
-    /* background: (rgba(244, 146, 146, 0.527) url('../../../assets/111.jpg')); */
-    /* background-image: url('../../../assets/111.jpg');
-    background-color: rgb(123, 49, 49);
-    background-blend-mode: multiply; */
+
     background-color: whitesmoke;
     color: black;
 
 }
 .toy{
-     font-size: xx-large;
-     font-weight: 700;
-     font-style: oblique;
-    padding: 20px;
-
+     font-weight: 500;
+     font-family: Georgia, 'Times New Roman', Times, serif;
+     
 }

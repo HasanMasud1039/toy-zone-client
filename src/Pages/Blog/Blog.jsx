@@ -1,12 +1,17 @@
 // import React from 'react';
 
+import useTitle from "../../Hook/Hook";
+
+// import { Helmet } from "react-helmet-async";
+
 const Blog = () => {
+    useTitle("Blog");
     return (
         <div className="rounded-lg p-4">
             <div className='bg-cyan-200  rounded p-1 shadow-lg mt-4'>
                 <h1 className='text-center text-3xl text-red-600 font-bold m-4 fw-bold'>Blog</h1>
             </div>
-            <div className='bg-success bg-gradient p-4 rounded-lg p-8 mb-4 mt-5
+            <div className='bg-success bg-gradient  p-8 mb-4 mt-5
               border-2 rounded'>
                 <span className='text-2xl text-red-700 font-bold'>Question 1: What is an access token and refresh token? How do they work and where should we store them on the client-side?</span>
                 <p>

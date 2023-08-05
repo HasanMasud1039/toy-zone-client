@@ -1,6 +1,6 @@
 // import React from 'react';
 import { Link} from 'react-router-dom';
-import logo from '../../../../public/tz.jpg'
+import logo from '/tz.jpg'
 
 import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
@@ -29,10 +29,10 @@ const Navbar = () => {
     return (
         <div>
 
-            <div>
-                <div  className="navbar py-4 d-flex justify-between space-x-8  text-xl rounded-lg">
+            <div className=''>
+                <div  className="navbar  d-flex justify-between space-x-6  text-xl rounded-lg">
 
-                    <div className="navbar-start  w-[80%]">
+                    <div className="navbar-start  w-[90%]">
                         <div className="dropdown">
                             <label tabIndex={0} className="btn btn-ghost lg:hidden">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
@@ -54,9 +54,8 @@ const Navbar = () => {
 
                         </div>
                         <div className='lg:w-[70%] md:w-[89%] ms-4 flex justify-between gap-0' >
-                            <div><img className='align-center w-[50%] rounded-xl border-2 border-red-200 shadow-lg' src={logo} /></div>
-                            <div className='font-serif w-full'><h4 className='toy'>Toy Zone</h4>
-                            
+                            <div><img className='align-center w-[60%] md:w-[50%] md:mt-1 rounded-xl border-2 border-red-200 shadow-lg' src={logo} /></div>
+                            <div className='font-sans pt-2 w-[120%] md:w-full'><h4 className='toy py-3 md:text-4xl text-3xl'>Toy Zone</h4>
                             </div>
                         </div>
                     </div>

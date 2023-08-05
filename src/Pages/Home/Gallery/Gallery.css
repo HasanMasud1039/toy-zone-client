@@ -1,7 +1,4 @@
-.container{
-    margin: 20px;
-    padding: 20px;
-}
+
 .img-area{
     text-align: center;
     color: #fff;
@@ -18,7 +15,7 @@
 .row{
     /* display: grid;
     grid-template-columns: repeat(4, 1fr); */
-    gap: 15px
+    gap: 10px
 }
 .image{
     width: 80%;

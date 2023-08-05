@@ -1,13 +1,13 @@
 // import React from 'react';
 import { Link } from 'react-router-dom';
-import logo from '../../../../public/tz.jpg'
+import logo from '/tz.jpg'
 import { FaEnvelope, FaFacebook, FaInstagram, FaLinkedin, FaPhone, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 const Footer = () => {
     return (
 
         <footer>
-            <div className="footer p-10 md:flex justify-between gap-2 bg-slate-200">
+            <div className="footer p-10 md:flex justify-between gap-2 space-y-6 bg-slate-200">
                 <div className=' text-center md:w-[30%] space-y-2'>
                     <img src={logo} className="mx-auto w-24 rounded-xl" alt="" />
                     <div className='px-4'>

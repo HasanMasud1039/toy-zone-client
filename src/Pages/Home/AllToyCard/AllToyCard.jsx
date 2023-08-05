@@ -20,7 +20,7 @@ const AllToyCard = ({ toy }) => {
                                     </div>
                                 </div>
                                 <div>
-                                    <div className="font-bold">{name}</div>
+                                    <div className="md:font-bold">{name}</div>
                                     <div className="text-sm opacity-50">{subCategory}</div>
                                 </div>
                             </div>

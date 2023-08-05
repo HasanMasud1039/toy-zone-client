@@ -17,7 +17,7 @@ const Reviews = () => {
     }, [])
     return (
         <div>
-            <h1 className="text-center text-3xl mt-8 w-4/12 mx-auto font-bold text-orange-500 uppercase border-y-4 py-4">Top Reviews</h1>
+            <h1 className="text-center md:text-3xl text-xl mt-8 w-4/12 mx-auto font-bold text-orange-500 uppercase border-y-4 py-4">Top Reviews</h1>
 
             <Swiper navigation={true} autoplay modules={[Navigation]} className="mySwiper">
 

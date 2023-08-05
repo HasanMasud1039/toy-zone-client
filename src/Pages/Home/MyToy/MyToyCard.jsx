@@ -36,7 +36,7 @@ const MyToyCard = ({ toy }) => {
         })
 
     }
-    return (
+    return ( 
         <div className="overflow-x-auto w-full">
             <table className="table w-full">
                 <tbody>
@@ -74,7 +74,7 @@ const MyToyCard = ({ toy }) => {
                             </div>
                         </td>
                         <td className=" bg-cyan-200 w-20">
-                            <button className="btn btn-error text-white "><Link to={`/alltoys/${toy._id}`}>Details</Link></button>
+                            <button className="btn btn-error text-white "><Link to={`/alltoys/${_id}`}>Details</Link></button>
                         </td>
                     </tr>
                     {/* row 2 */}

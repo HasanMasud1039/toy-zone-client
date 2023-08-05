@@ -4,8 +4,11 @@ import { FaDownload } from "react-icons/fa";
 import { useLoaderData, useParams } from "react-router-dom";
 import PdfViewer from "../../PDFDownload/PDFViewer";
 import { PDFDownloadLink } from "@react-pdf/renderer";
+import useTitle from "../../../Hook/Hook";
+// import { Helmet } from 'react-helmet-async';
 
 const ToyDetails = () => {
+  useTitle("Toy Details");
   const toyDetail = useLoaderData();
   const id = useParams();
   // console.log(id, toyDetail);
@@ -20,6 +23,9 @@ const ToyDetails = () => {
 
   return (
     <div>
+            {/* <Helmet>
+                <title>Toy Zone | Toy Details</title>
+            </Helmet> */}
       <div className="hero min-h-screen bg-base-100">
         <div className="hero-content  rounded-lg flex-col me-8 lg:flex-row">
           <img src={toyDetail.picture} className="max-w-sm rounded-lg shadow-2xl" />

@@ -1,11 +1,14 @@
+// import { Helmet } from 'react-helmet-async';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../../Providers/AuthProvider';
+import useTitle from '../../../Hook/Hook';
 
 const AddToy = () => {
     const { user } = useContext(AuthContext);
     const { navigate } = useNavigate();
+    useTitle("Add Toy");
     const handleAddToy = event => {
         event.preventDefault();
         const form = event.target;
@@ -53,9 +56,13 @@ const AddToy = () => {
 
     return (
         <div>
+            {/* <Helmet>
+                <title>Toy Zone || Add Toy</title>
+            </Helmet> */}
+
             <h1 className='text-4xl uppercase font-serif text-center font-bold bg-gradient-to-b from-green-400 to-green-300 pt-4'>Add a toy</h1>
             <div className="hero bg-gradient-to-t to-green-300 from-yellow-100">
-                <div className="hero-content py-8 w-[50%] flex-col lg:flex-row-reverse">
+                <div className="hero-content py-8 md:w-[50%] w-full  flex-col lg:flex-row-reverse">
                     <div className="card w-full  shadow-2xl  shadow-red-400 bg-base-400">
                         <form onSubmit={handleAddToy}>
                             <div className="card-body ">

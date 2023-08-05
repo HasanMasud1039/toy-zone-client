@@ -8,7 +8,7 @@ import { GoogleAuthProvider, getAuth, signInWithPopup } from "firebase/auth";
 import { AuthContext } from "../../Providers/AuthProvider";
 import useTitle from "../../Hook/Hook";
 import { ToastContainer, toast } from "react-toastify";
-
+// import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
      const [user, setUser] = useState(null);
@@ -34,7 +34,7 @@ const Login = () => {
                 const loggedUser = result.user;
                 setUser(loggedUser);
                 toast("Login Successful!")
-                navigate(from, { replace: true })
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log(error.message);
@@ -49,7 +49,8 @@ const Login = () => {
                 setUser(loggedInUser)
                 // console.log(loggedInUser);
                 localStorage.setItem('user', loggedInUser);
-                toast("Login Successful!")
+                toast("Login Successful!");
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.log('error ', error.message)
@@ -60,6 +61,10 @@ const Login = () => {
 
     return (
         <div className="bg-gradient-to-b to-slate-400 from-cyan-100">
+                       
+            {/* <Helmet>
+                <title>Toy Zone || Login</title>
+            </Helmet> */}
             <div className="hero ">
                 <div className="hero-content flex-col  space-y-4">
                     <div className="text-center lg:text-left">

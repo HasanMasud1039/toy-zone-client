@@ -13,6 +13,7 @@ import ShowCardToy from "../Pages/ShowCard/ShowCardToy";
 import AddToy from "../Pages/Home/AddToy/AddToy";
 import UpdateToy from "../Pages/Home/UpdateToy/UpdateToy";
 import MyToy from "../Pages/Home/MyToy/MyToy";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/addtoy',
-        element: <AddToy></AddToy>
+        element: <PrivateRoute><AddToy></AddToy></PrivateRoute>
       },
       {
         path: '/updatetoy',

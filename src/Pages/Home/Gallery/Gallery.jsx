@@ -3,9 +3,9 @@ import './Gallery.css'
 
 const Gallery = () => {
     return (
-        <div className='container space-y-6 border-1'>
+        <div className='my-4 p-2 space-y-6'>
             <div className=' space-y-4 pb-6 h-[50%] w-full space-x-2'>
-                <h1 className="text-center text-xl my-4 w-4/12 mx-auto font-bold text-orange-500 uppercase border-y-4 py-4">Out Top Sale Products</h1>
+                <h1 className="text-center md:text-3xl text-xl my-4 w-4/12 mx-auto font-bold text-orange-500 uppercase border-y-4 py-4">Out Top Sale Products</h1>
                 <div className="text-lime-800 font-semibold flex justify-evenly mb-4"></div>
             </div>
 

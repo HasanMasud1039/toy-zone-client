@@ -1,25 +1,32 @@
 import React, { useContext } from 'react';
-import { Form, Link } from 'react-router-dom';
+import { Form, Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import useTitle from '../../Hook/Hook';
 import { createUserWithEmailAndPassword, getAuth } from 'firebase/auth';
 import app from '../../Firebase/firebase.config';
 import { ToastContainer, toast } from 'react-toastify';
 // const auth = getAuth(app);
-import 'react-toastify/dist/ReactToastify.css';
+
+// import { Helmet } from 'react-helmet-async';
 
 
 const Registration = () => {
-  const { registerUser , updateUserProfile} = useContext(AuthContext);
+  const { registerUser, updateUserProfile } = useContext(AuthContext);
   useTitle("Registration");
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || '/';
+
   const handleRegistration = event => {
     event.preventDefault();
     const form = event.target;
     const name = form.name.value;
     const email = form.email.value;
-    const photo = form.photo.value;
+    const photoURL = form.photoURL.value;
     const password = form.password.value;
     console.log(email, password);
+
+
 
 
     // createUserWithEmailAndPassword(auth, email, password)
@@ -29,6 +36,7 @@ const Registration = () => {
         updateUserProfile(result.name, result.photoURL)
         console.log(createdUser);
         toast('Successfully Registered');
+        navigate(from, { replace: true });
       })
       .catch(error => {
         console.log(error.message);
@@ -40,6 +48,9 @@ const Registration = () => {
 
   return (
     <div className="hero min-h-screen bg-gradient-to-b to-slate-800 from-cyan-400">
+      {/* <Helmet>
+        <title>Toy Zone | Registration</title>
+      </Helmet> */}
       <div className="hero-content flex-col space-y-8">
         <div className="text-center lg:text-left">
           <h1 className="text-5xl font-bold">Register now!</h1>
@@ -70,7 +81,7 @@ const Registration = () => {
                 <label className="label">
                   <span className="label-text">Photo URL</span>
                 </label>
-                <input type="text" placeholder="Photo URL" name='photo' className="input input-bordered" />
+                <input type="text" placeholder="Photo URL" name='photoURL' className="input input-bordered" />
               </div>
               <div className="form-control mt-6">
                 <button className="btn btn-primary">Register</button>
@@ -84,19 +95,18 @@ const Registration = () => {
         </form>
       </div>
       <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
-      {/* Same as */}
-      <ToastContainer />
+                    position="top-right"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss
+                    draggable
+                    pauseOnHover
+                    theme="light"
+                />
+                <ToastContainer />
     </div>
   );
 };
