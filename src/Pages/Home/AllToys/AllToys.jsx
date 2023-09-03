@@ -14,7 +14,7 @@ const AllToys = () => {
 
     const search = () => {
         fetch(
-            `https://toy-zone-server-hasanmasud1039.vercel.app/getSearchByToyName/${searchText}`
+            `https://toy-zone-server-new.vercel.app/getSearchByToyName/${searchText}`
         )
             .then((res) => res.json())
             .then((data) => {

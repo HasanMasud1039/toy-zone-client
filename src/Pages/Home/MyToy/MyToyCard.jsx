@@ -19,7 +19,7 @@ const MyToyCard = ({ toy }) => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://toy-zone-server-hasanmasud1039.vercel.app/toys/${id}`, {
+                fetch(`https://toy-zone-server-new.vercel.app/toys/${id}`, {
                     method: 'DELETE'
                 })
                     .then(res => res.json())

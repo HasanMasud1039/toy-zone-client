@@ -32,7 +32,7 @@ const AddToy = () => {
 
         const newAddedToy = { name, picture, category_id, subCategory, price, rating, sellerEmail, sellerName, quantity, details };
         console.log(newAddedToy);
-        fetch(`https://toy-zone-server-hasanmasud1039.vercel.app/toys`, {
+        fetch(`https://toy-zone-server-new.vercel.app/toys`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

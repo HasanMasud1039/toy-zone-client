@@ -41,7 +41,7 @@ const Navbar = () => {
                                 <li className='font-semibold font-serif '><Link to='/'>Home</Link></li>
                                 <li className='font-semibold font-serif '><Link to='/alltoys'>All Toys</Link></li>
                                 <li className='font-semibold font-serif '><Link to='/addtoy'>Add Toy</Link></li>
-                                <li className='font-semibold font-serif '><Link to='/blog'>Blog</Link></li>
+                                {/* <li className='font-semibold font-serif '><Link to='/blog'>Blog</Link></li> */}
                                 {user?.email ? (<>
 
                                     <li className='font-semibold font-serif '><Link to={`/mytoy/${user.email}`}>My Toys</Link></li>
@@ -64,7 +64,7 @@ const Navbar = () => {
                             <li className=''><Link to='/'>Home</Link></li>
                             <li className=''><Link to='/alltoys'>All Toys</Link></li>
                             <li className=''><Link to='/addtoy'>Add Toy</Link></li>
-                            <li className=''><Link to='/blog'>Blog</Link></li>
+                            {/* <li className=''><Link to='/blog'>Blog</Link></li> */}
                             {/* <li className=''><a>My Toys</a></li> */}
                         </ul>
 

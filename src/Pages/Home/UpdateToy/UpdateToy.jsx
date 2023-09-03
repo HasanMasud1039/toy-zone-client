@@ -32,7 +32,7 @@ const UpdateToy = () => {
         const newAddedToy = {name, picture,category_id, subCategory, price, rating, sellerEmail, sellerName, quantity, details};
         console.log(newAddedToy);
         //send data to server from client
-        fetch(`https://toy-zone-server-hasanmasud1039.vercel.app/toys/${_id}`, {
+        fetch(`https://toy-zone-server-new.vercel.app/toys/${_id}`, {
             method: 'PUT',
             headers: {
                 'content-type': 'application/json'
