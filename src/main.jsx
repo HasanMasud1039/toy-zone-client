@@ -8,13 +8,12 @@ import "./index.css";
 import router from './Routes/Route';
 import AuthProvider from './Providers/AuthProvider';
 
-
-
-
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
     <AuthProvider>
-    <RouterProvider router={router} />
+      <div className='md:max-w-screen-xl overflow-x-hidden md:mx-auto'>
+        <RouterProvider router={router} />
+      </div>
     </AuthProvider>
   </React.StrictMode>,
 )

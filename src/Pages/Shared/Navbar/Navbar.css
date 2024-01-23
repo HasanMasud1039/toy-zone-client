@@ -1,11 +1,21 @@
 .navbar{
-
-    background-color: whitesmoke;
-    color: black;
-
+    background-color: rgb(181, 22, 165);
+    color: white;
 }
 .toy{
      font-weight: 500;
      font-family: Georgia, 'Times New Roman', Times, serif;
      
+}
+.active{
+    color: rgb(255, 255, 255);
+    background: transparent;
+    /* font-size: large; */
+    box-shadow: inset -2px -2px 4px #4b484873,
+    inset 2px 2px 2px rgba(182, 177, 223, 0.844);
+}
+.activeBtn{
+    /* font-size: large; */
+    box-shadow: inset -2px -2px 4px #cadc2373,
+    inset 2px 2px 2px rgba(250, 132, 6, 0.934);
 }

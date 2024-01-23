@@ -1,12 +1,10 @@
-
 import './Gallery.css'
 
 const Gallery = () => {
     return (
-        <div className='my-4 p-2 space-y-6'>
+        <div className=' p-4 space-y-6 bg-gradient-to-b from-cyan-100'>
             <div className=' space-y-4 pb-6 h-[50%] w-full space-x-2'>
-                <h1 className="text-center md:text-3xl text-xl my-4 w-4/12 mx-auto font-bold text-orange-500 uppercase border-y-4 py-4">Out Top Sale Products</h1>
-                <div className="text-lime-800 font-semibold flex justify-evenly mb-4"></div>
+                <h1 className="text-center md:text-3xl text-xl my-4 w-4/12 mx-auto font-bold text-orange-600 uppercase border-y-4 border-fuchsia-700 py-4">Our Top Sale Products</h1>
             </div>
 
             <div className='row grid grid-cols-2 md:grid-cols-4 h-full'>
@@ -22,7 +20,7 @@ const Gallery = () => {
                 </div>
                 <div className=''>
                     <div className='img-area'>
-                        <img className='image h-full' src="https://i.ibb.co/xFdZY1X/car.webp" alt="" />
+                        <img className='image  h-full' src="https://i.ibb.co/xFdZY1X/car.webp" alt="" />
                         <div className='img-text'>
                             <h1>Off Road Adventure</h1>
                             <h3>Regular Car</h3>

@@ -3,6 +3,8 @@
     text-align: center;
     color: #fff;
     position: relative;
+    box-shadow: inset -2px -2px 4px #4b484873,
+    inset 2px 2px 2px rgba(182, 177, 223, 0.844);
 }
 .img-area h1{
     font-weight: 700;
@@ -18,12 +20,11 @@
     gap: 10px
 }
 .image{
-    width: 80%;
+    width: 100%;
     height: 200px;
     display: block;
     border-radius: 20px;
-    border: 2px solid ;
-    box-shadow:aqua;
+    padding: 5px;
 }
 
 .img-text,
@@ -41,7 +42,7 @@
 }
 .img-area:hover:after{
     background: linear-gradient(to bottom, rgba(199,0,57,.01) 0, rgba(199,0,57,.25) 25%, rgba(211, 62, 104, 0.5) 50%,rgba(199,0,57,.75) 75%,rgb(213, 72, 112) 80%);
-    transform: scale(1.2);
+    transform: scale(1.1);
     border-radius: 20px;
 
 }

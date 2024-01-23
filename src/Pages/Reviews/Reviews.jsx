@@ -1,6 +1,4 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-
-// Import Swiper styles
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from 'swiper/modules';
@@ -17,9 +15,9 @@ const Reviews = () => {
     }, [])
     return (
         <div>
-            <h1 className="text-center md:text-3xl text-xl mt-8 w-4/12 mx-auto font-bold text-orange-500 uppercase border-y-4 py-4">Top Reviews</h1>
+            <h1 className="text-center md:text-3xl text-xl mt-8 w-4/12 mx-auto font-bold text-orange-600 uppercase border-y-4 border-fuchsia-700 py-4">Top Reviews</h1>
 
-            <Swiper navigation={true} autoplay modules={[Navigation]} className="mySwiper">
+            <Swiper navigation={true} autoplay={true} modules={[Navigation]} className="mySwiper">
 
                 {
                     reviews.map(review => <SwiperSlide
@@ -30,7 +28,8 @@ const Reviews = () => {
                                 value={review.rating}
                                 readOnly
                             />
-                            <p className="my-10">{review.details}</p>
+                            <p className="my-10 text-center">{review.details}</p>
+                            <img src={review.photo} className="w-24 h-24 rounded-full" alt="Reviewer" />
                             <h3 className="text-2xl text-orange-400">{review.name}</h3>
                         </div>
                     </SwiperSlide>)
