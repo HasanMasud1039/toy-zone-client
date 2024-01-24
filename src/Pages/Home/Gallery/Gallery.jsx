@@ -1,113 +1,79 @@
 import './Gallery.css'
 
 const Gallery = () => {
+    const topProducts = [
+        {
+            image: 'https://i.ibb.co/7GBQfmj/51-V9-X3-Odb0-L-AC-UL400.jpg',
+            name: 'Sports Racer',
+            category: 'Racing Car',
+            price: 21
+        },
+        {
+            image: 'https://i.ibb.co/xFdZY1X/car.webp',
+            name: 'Off Road Adventure',
+            category: 'Regular Car',
+            price: 15
+        },
+        {
+            image: 'https://img.freepik.com/premium-photo/bangkok-thailand-08082022-lamborghini-luxury-super-car-fast-sports-premium-lighting-background-3d-illustration_67092-1599.jpg',
+            name: 'Faster Racer',
+            category: 'Racing Car',
+            price: 14
+        },
+        {
+            image: 'https://i.ibb.co/Bjn2d04/blacks-tobbi-kid-cars-th17u0567-64-600.webp',
+            name: 'Black Panther',
+            category: 'Racing Car',
+            price: 18
+        },
+        {
+            image: 'https://i.ibb.co/qJWNt0w/81l-N7azu-a-L-SS400.jpg',
+            name: 'Police Car',
+            category: 'Police Car',
+            price: 18
+        },
+        {
+            image: 'https://i.ibb.co/vqdV8KT/images-1.jpg',
+            name: 'Fire Fighters Van',
+            category: 'Fire Truck',
+            price: 16
+        },
+        {
+            image: 'https://i.ibb.co/F3Tj6Sd/ebd0d0370f72f217a3ed2e5da8db22b7.jpg',
+            name: 'City Truck',
+            category: 'Truck',
+            price: 15
+        },
+        {
+            image: 'https://i.ibb.co/9yJwkN2/1-32-die-cast-metal-cars-pullback-toy-long-lamborghini-metal-car-original-imafqjfaznbpzud9.jpg',
+            name: 'Limousine Car',
+            category: 'Limo Car',
+            price: 16
+        },
+    ]
     return (
-        <div className=' p-4 space-y-6 bg-gradient-to-b from-cyan-100'>
+        <div className=' p-4 space-y-6 bg-gradient-to-b to-base-200 from-cyan-100'>
             <div className=' space-y-4 pb-6 h-[50%] w-full space-x-2'>
                 <h1 className="text-center md:text-3xl text-xl my-4 w-4/12 mx-auto font-bold text-orange-600 uppercase border-y-4 border-fuchsia-700 py-4">Our Top Sale Products</h1>
             </div>
 
-            <div className='row grid grid-cols-2 md:grid-cols-4 h-full'>
-                <div className='h-[60%]'>
-                    <div className='img-area'>
-                        <img className='image h-full' src="https://i.ibb.co/7GBQfmj/51-V9-X3-Odb0-L-AC-UL400.jpg" alt="" />
-                        <div className='img-text '>
-                            <h1>Sports Racer</h1>
-                            <h3>Racing Car</h3>
-                            <h3>Price: $21</h3>
+
+            <div className='row  grid grid-cols-2 md:grid-cols-4 md:gap-8 gap-2 md:mx-4'>
+                {
+                    topProducts.map(product =>
+                        <div className=''>
+                            <div className='img-area'>
+                                <img className='image h-full' src={product.image} alt="" />
+                                <div className='img-text'>
+                                    <h1>{product.name}</h1>
+                                    <h3>{product.category}</h3>
+                                    <h3>Price: ${product.price}</h3>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
-                <div className=''>
-                    <div className='img-area'>
-                        <img className='image  h-full' src="https://i.ibb.co/xFdZY1X/car.webp" alt="" />
-                        <div className='img-text'>
-                            <h1>Off Road Adventure</h1>
-                            <h3>Regular Car</h3>
-                            <h3>Price: $21</h3>
-                        </div>
-                    </div>
-                </div>
-                <div className=''>
-                    <div className='img-area'>
-                        <img className='image' src="https://img.freepik.com/premium-photo/bangkok-thailand-08082022-lamborghini-luxury-super-car-fast-sports-premium-lighting-background-3d-illustration_67092-1599.jpg" alt="" />
-                        <div className='img-text'>
-                            <h1>Faster Racer</h1>
-                            <h3>Racing Car</h3>
-                            <h3>Price: $11</h3>
-                        </div>
-                    </div>
-                </div>
-                <div className=''>
-                    <div className='img-area'>
-                        <img className='image' src="https://i.ibb.co/qJWNt0w/81l-N7azu-a-L-SS400.jpg" alt="" />
-                        <div className='img-text'>
-                            <h1>Police Car</h1>
-                            <h3>Police Car</h3>
-                            <h3>Price: $12</h3>
-                        </div>
-                    </div>
-                </div>
-                {/* <div className='col-md-4 col-sm-6'>
-                    <div className='img-area'>
-                        <img src={photo6} alt="" />
-                        <div className='img-text'>
-                            <h1>Fire Truck</h1>
-                            <h3>Price: $21</h3>
-                        </div>
-                    </div>
-                </div> */}
-            </div>
-            <div className='row  grid grid-cols-2 md:grid-cols-4 h-full'>
-                <div className='h-[60%]'>
-                    <div className='img-area'>
-                        <img className='image h-full' src="https://i.ibb.co/vqdV8KT/images-1.jpg" alt="" />
-                        <div className='img-text'>
-                            <h1>Fire Fighters Van</h1>
-                            <h3>Fire Truck</h3>
-                            <h3>Price: $12</h3>
-                        </div>
-                    </div>
-                </div>
-                <div className=''>
-                    <div className='img-area'>
-                        <img className='image h-full' src="https://i.ibb.co/F3Tj6Sd/ebd0d0370f72f217a3ed2e5da8db22b7.jpg" alt="" />
-                        <div className='img-text'>
-                            <h1>City Truck</h1>
-                            <h3>Truck</h3>
-                            <h3>Price: $12</h3>
-                        </div>
-                    </div>
-                </div>
-                <div className=''>
-                    <div className='img-area'>
-                        <img className='image' src="https://i.ibb.co/9yJwkN2/1-32-die-cast-metal-cars-pullback-toy-long-lamborghini-metal-car-original-imafqjfaznbpzud9.jpg" alt="" />
-                        <div className='img-text'>
-                            <h1>Limosine Car</h1>
-                            <h3>Limo Car</h3>
-                            <h3>Price: $12</h3>
-                        </div>
-                    </div>
-                </div>
-                <div className=''>
-                    <div className='img-area'>
-                        <img className='image' src="https://i.ibb.co/Bjn2d04/blacks-tobbi-kid-cars-th17u0567-64-600.webp" alt="" />
-                        <div className='img-text'>
-                            <h1>Black Panther Car</h1>
-                            <h3>Sports Car</h3>
-                            <h3>Price: $22</h3>
-                        </div>
-                    </div>
-                </div>
-                {/* <div className='col-md-4 col-sm-6'>
-                    <div className='img-area'>
-                        <img src={photo6} alt="" />
-                        <div className='img-text'>
-                            <h1>Fire Truck</h1>
-                            <h3>Price: $21</h3>
-                        </div>
-                    </div>
-                </div> */}
+                    )
+                }
+
             </div>
         </div>
     );

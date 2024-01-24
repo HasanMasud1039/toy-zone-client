@@ -15,7 +15,7 @@ const ToyTabShow = ({ item }) => {
 
                     {/* Put this part before </body> tag */}
                     <input type="checkbox" id={_id} className="modal-toggle" />
-                    <div className="modal h-fit">
+                    <div className="modal">
                         <div className="modal-box gap-4">
                             <div className='gap-4 text-sm flex text-left'>
                                 <div>

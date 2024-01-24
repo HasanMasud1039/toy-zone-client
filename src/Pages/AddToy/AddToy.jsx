@@ -2,8 +2,8 @@
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../../Providers/AuthProvider';
-import useTitle from '../../../Hook/Hook';
+import { AuthContext } from '../../Providers/AuthProvider';
+import useTitle from '../../Hook/Hook';
 
 const AddToy = () => {
     const { user } = useContext(AuthContext);
@@ -66,83 +66,78 @@ const AddToy = () => {
                     <div className="card w-full  shadow-2xl  shadow-red-400 bg-base-400">
                         <form onSubmit={handleAddToy}>
                             <div className="card-body ">
-                                <div className="form-control ">
-                                    <label className="label ">
+                                <div className="form-control grid grid-cols-4">
+                                    <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Toy Name</span>
                                     </label>
-                                    <input type="text" placeholder="Name" name='name' className="input input-bordered" />
+                                    <input type="text" placeholder="Name" name='name' className="col-span-3 input input-bordered" />
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
+                                <div className="form-control grid grid-cols-4">
+                                    <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Picture URL</span>
                                     </label>
-                                    <input type="text" placeholder="Photo URL" name='picture' className="input input-bordered" />
+                                    <input type="text" placeholder="Photo URL" name='picture' className="input input-bordered col-span-3" />
                                 </div>
 
-                                <div className="flex flex-wrap -mx-3 mb-2">
-                                    <div className="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                        <label className="block text-lg font-semibold tracking-wide label-text   mb-2">
-                                            Sub-Category
-                                        </label>
-                                        <div className="relative">
+                                <div className="grid grid-cols-4 w-full mb-6 md:mb-0">
+                                    <label className="col-span-1 text-lg font-semibold tracking-wide label-text   mb-2">
+                                        Category
+                                    </label>
+                                    <div className="relative col-span-3">
+                                        <select className="col-span-4 w-full appearance-none  bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4  rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name='sub_category' id="grid-state">
+                                            <option >Sports Car</option>
+                                            <option >Truck</option>
+                                            <option >Regular Car</option>
+                                            <option >Mini Fire Truck</option>
+                                            <option > Mini Police Car</option>
+                                            <option>Limo Car</option>
+                                        </select>
 
-                                            <select className="block appearance-none  bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" name='sub_category' id="grid-state">
-                                                <option >Sports Car</option>
-                                                <option >Truck</option>
-                                                <option >Regular Car</option>
-                                                <option >Mini Fire Truck</option>
-                                                <option > Mini Police Car</option>
-                                                <option>Limo Car</option>
-                                            </select>
-
-                                            <div className="pointer-events-none absolute inset-y-0 left-32 flex items-center px-2 text-gray-700">
-                                                <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
-                                            </div>
+                                        <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center px-2 text-gray-700">
+                                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z" /></svg>
                                         </div>
                                     </div>
                                 </div>
 
-
-                                {/* ///// */}
-                                <div className="form-control">
-                                    <label className="label">
+                                <div className="form-control grid grid-cols-4">
+                                    <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Price</span>
                                     </label>
-                                    <input type="number" placeholder="Price" name='price' className="input input-bordered" />
+                                    <input type="number" placeholder="Price" name='price' className="input input-bordered col-span-3" />
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
+                                <div className="form-control grid grid-cols-4">
+                                    <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Rating</span>
                                     </label>
-                                    <input type="number" placeholder="Rating Out of 5" name='rating' className="input input-bordered" />
+                                    <input type="number" placeholder="Rating Out of 5" name='rating' className="input input-bordered col-span-3" />
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
+                                <div className="form-control grid grid-cols-4">
+                                    <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Quantity</span>
                                     </label>
-                                    <input type="number" placeholder="Quantity" name='quantity' className="input input-bordered" />
+                                    <input type="number" placeholder="Quantity" name='quantity' className="input input-bordered col-span-3" />
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
+                                <div className="form-control grid grid-cols-4">
+                                    <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Seller Name</span>
                                     </label>
-                                    <input type="text" placeholder={user?.displayName} name='seller_name' className="input input-bordered" />
+                                    <input type="text" value={user?.displayName} name='seller_name' className="input input-bordered col-span-3" />
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
+                                <div className="form-control grid grid-cols-4">
+                                    <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Seller Email</span>
                                     </label>
-                                    <input type="email" placeholder={user.email} name='seller_email' className="input input-bordered" />
+                                    <input type="email" value={user.email} name='seller_email' className="input input-bordered col-span-3" />
                                 </div>
-                                <div className="form-control">
-                                    <label className="label">
+                                <div className="form-control grid grid-cols-4">
+                                    <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Description</span>
                                     </label>
-                                    <input type="text" placeholder="Description" name='description' className="input textarea row-2 input-bordered" />
+                                    <input type="text" placeholder="Description" name='description' className="input col-span-3 textarea row-2 input-bordered" />
                                 </div>
 
                                 <div className="form-control mt-6">
-                                    <button className="btn btn-error font-bold text-lg">Add Toy</button>
+                                    <button className="btn btn-warning activeBtn bg-amber-600 text-white font-bold">Add Toy</button>
                                 </div>
                             </div>
                         </form>

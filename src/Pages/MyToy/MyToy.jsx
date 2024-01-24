@@ -1,23 +1,22 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
-import { AuthContext } from '../../../Providers/AuthProvider';
 import { useLoaderData, useParams } from 'react-router-dom';
 import MyToyCard from './MyToyCard';
-import useTitle from '../../../Hook/Hook';
+import { AuthContext } from '../../Providers/AuthProvider';
+import { Helmet } from 'react-helmet';
 // import { Helmet } from 'react-helmet-async';
 
 
 const MyToy = () => {
-    useTitle("My Toy");
     const { user } = useContext(AuthContext);
     const toys = useLoaderData();
     console.log(toys);
 
     return (
         <div>
-            {/* <Helmet>
-                <title>Toy Zone | My Toy</title>
-            </Helmet> */}
+            <Helmet>
+                <title>My Toy | Toy Zone</title>
+            </Helmet>
 
 
             <div className="p-8 overflow-x-auto w-full text-lg">

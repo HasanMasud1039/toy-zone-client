@@ -1,9 +1,8 @@
 // import React from 'react';
 import DataTable, { createTheme } from 'react-data-table-component';
 import { useLoaderData } from "react-router-dom";
-import AllToyCard from "../AllToyCard/AllToyCard";
 import { useEffect, useState } from "react";
-import useTitle from "../../../Hook/Hook";
+import useTitle from "../../Hook/Hook";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight, FaCartPlus } from 'react-icons/fa';
 import { CiViewTable } from "react-icons/ci";
 import { MdOutlineGridView } from "react-icons/md";
@@ -12,7 +11,7 @@ import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css'
 // import { Helmet } from "react-helmet-async";
 
-const AllToys = ({ setCart }) => {
+const AllToys = () => {
     const toys = useLoaderData();
     const discountPercentage = 10;
     const [alltoy, setAllToy] = useState(toys);
@@ -268,7 +267,7 @@ const AllToys = ({ setCart }) => {
 
     return (
         <div className="px-2">
-            <div className='md:flex space-y-4 justify-between md:px-8 px-2 py-2 border-b-2 mb-4'>
+            <div className='md:flex space-y-4 md:space-y-0 justify-between md:px-8 px-2 py-2 shadow-xl border-b-2 mb-4'>
                 <div className='md:w-fit'>
                     <input
                         type='text'

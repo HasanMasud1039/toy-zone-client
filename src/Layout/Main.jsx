@@ -4,7 +4,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../Pages/Shared/Navbar/Navbar";
 import Footer from "../Pages/Shared/Footer/Footer";
 
-import CategoryToy from "../Pages/Home/CategoryToy/CategoryToy";
+import CategoryToy from "../Pages/CategoryToy/CategoryToy";
 
 const Main = () => {
     const location = useLocation();

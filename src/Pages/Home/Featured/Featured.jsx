@@ -1,4 +1,4 @@
-import featuredImg from '../../assets/feat/feat3.jpg'
+import featuredImg from '../../../assets/feat/feat3.jpg'
 import { Link } from "react-router-dom";
 
 const Featured = () => {

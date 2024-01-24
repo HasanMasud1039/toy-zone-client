@@ -52,9 +52,9 @@ const Navbar = () => {
                         <label tabIndex={0} className="lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
-                        <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-slate-300 rounded-box w-52 ">
+                        <ul tabIndex={0} className="menu menu-compact text-black dropdown-content mt-3 p-2 shadow bg-slate-300 rounded-box w-52 ">
                             <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/home'>Home</NavLink></li>
-                            <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/'>Category</NavLink></li>
+                            <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/category'>Category</NavLink></li>
                             <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/alltoys'>All Toys</NavLink></li>
                             <li className='font-semibold font-serif '><NavLink to='/addtoy'>Add Toy</NavLink></li>
                             <li className='font-semibold font-serif '><NavLink to='/blog'>Blog</NavLink></li>
@@ -73,7 +73,7 @@ const Navbar = () => {
                 <div className="navbar-start w-[70%] mx-auto space-x-8 hidden lg:flex justify-center">
                     <ul className="menu font-semibold font-serif menu-horizontal space-x-4 px-1">
                         <li className=''><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/home'>Home</NavLink></li>
-                        <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/'>Category</NavLink></li>
+                        <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/category'>Category</NavLink></li>
                         <li className=''><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/alltoys'>All Toys</NavLink></li>
                         <li className=''><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/addtoy'>Add Toy</NavLink></li>
                         <li className=''><NavLink className={({isActive}) => isActive ? 'active' : ''}to='/'>Blog</NavLink></li>

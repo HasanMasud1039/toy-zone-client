@@ -2,7 +2,7 @@
 import { Tabs } from "react-tabs";
 import { useLoaderData, useParams } from "react-router-dom";
 // import TabToy from "../Shared/Navbar/TabToy";
-import CategoryToy from "../Home/CategoryToy/CategoryToy";
+import CategoryToy from "../CategoryToy/CategoryToy";
 // import CategoryToy from "../Home/CategoryToy/CategoryToy";
 
 const ShowCardToy = () => {

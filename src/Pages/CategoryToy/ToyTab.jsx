@@ -16,15 +16,14 @@ const ToyTab = ({ items }) => {
         },
     };
     return (
-        <div >
-
+        <div className="w-[90%] mx-auto">
             <Swiper
                 pagination={pagination}
                 modules={[Pagination]}
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <div className='flex flex-wrap justify-evenly mt-8 gap-4'>
+                    <div className='grid grid-cols-5 mt-8 gap-4'>
                         {
                             items.map(item => <ToyTabShow
                                 key={item._id}
