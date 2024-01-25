@@ -12,7 +12,7 @@ const Main = () => {
     return (
         <div className="px-0">
             {noNavbar || <Navbar></Navbar>}
-            <div className="max-w-screen-2xl mx-auto px-2">
+            <div className="max-w-screen-2xl mx-auto ">
                 <Outlet></Outlet>
             </div>
             {noNavbar || <Footer></Footer>}

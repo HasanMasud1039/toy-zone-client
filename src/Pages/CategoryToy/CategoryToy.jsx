@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import useToys from "../../Hook/useToys";
 import ToyTab from "./ToyTab";
+import { Helmet } from "react-helmet";
 
 
 const CategoryToy = () => {
@@ -21,22 +22,23 @@ const CategoryToy = () => {
     console.log(loading);
     return (
         <div className='py-2 text-xl bg-gradient-to-b from-base-200 to-cyan-100 '>
-            {/* <h3 className='uppercase pt-4 ps-4 font-bold text-red-900'>sub-categories: </h3> */}
-            {/* <p className="text-center">Explore Our Collection</p> */}
+            <Helmet>
+                <title>Categories || Toy Zone</title>
+            </Helmet>
             <h1 className="text-center md:text-3xl text-xl my-4 w-4/12 mx-auto font-bold text-orange-600 uppercase border-y-4 border-fuchsia-700 py-4">Explore Our Collection</h1>
             {
                 loading ?
                     <progress className="progress w-full text-center md:mx-12 my-12"></progress>
                     : <></>
             }
-            <div className="text-red-600 font-semibold flex justify-evenly my-4">
+            <div className="text-red-600 font-semibold flex flex-wrap justify-evenly my-4">
                 <Tabs className="w-full" defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-                    <TabList className="w-full font-serif flex justify-center">
+                    <TabList className="w-full font-serif flex flex-wrap justify-center">
                         <Tab>Sports Car</Tab>
                         <Tab>Truck</Tab>
                         <Tab>Regular Car</Tab>
-                        <Tab>Mini Fire Truck</Tab>
-                        <Tab>Mini Police Car</Tab>
+                        <Tab>Fire Truck</Tab>
+                        <Tab>Police Car</Tab>
                         <Tab>Limo Car</Tab>
                     </TabList>
                     <TabPanel>

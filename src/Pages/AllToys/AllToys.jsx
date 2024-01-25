@@ -9,6 +9,7 @@ import { MdOutlineGridView } from "react-icons/md";
 import { Toaster, toast } from 'react-hot-toast';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css'
+import { Helmet } from 'react-helmet';
 // import { Helmet } from "react-helmet-async";
 
 const AllToys = () => {
@@ -19,7 +20,6 @@ const AllToys = () => {
     const [minPrice, setMinPrice] = useState('');
     const [maxPrice, setMaxPrice] = useState('');
     const [gridView, setGridView] = useState(true);
-    useTitle("All Toys");
 
     useEffect(() => {
         const filtered = toys.filter((item) => {
@@ -267,6 +267,9 @@ const AllToys = () => {
 
     return (
         <div className="px-2">
+            <Helmet>
+                <title>All Toys || Toy Zone</title>
+            </Helmet>
             <div className='md:flex space-y-4 md:space-y-0 justify-between md:px-8 px-2 py-2 shadow-xl border-b-2 mb-4'>
                 <div className='md:w-fit'>
                     <input
@@ -308,7 +311,6 @@ const AllToys = () => {
                             pagination
                             paginationComponentOptions={paginationComponentOptions}
                             highlightOnHover
-
                         />
                         :
                         <div className="grid md:grid-cols-5 grid-cols-2 gap-4">
@@ -363,25 +365,25 @@ const AllToys = () => {
                             ))}
                         </div>
                 }
-            {/* Pagination controls */}
+                {/* Pagination controls */}
                 {
-                    gridView ? 
-                    <div className='flex justify-center   bottom-0'>
-                    <button className='text-3xl text-orange-600'
-                        onClick={() => handlePageChange(currentPage - 1)}
-                        disabled={currentPage === 1}
-                    >
-                        <FaArrowAltCircleLeft />
-                    </button>
-                    <span className='m-4 text-xl'> Page {currentPage} of {totalPages} </span>
-                    <button className='text-3xl text-orange-600'
-                        onClick={() => handlePageChange(currentPage + 1)}
-                        disabled={currentPage === totalPages}
-                    >
-                        <FaArrowAltCircleRight />
-                    </button>
-                </div>
-                : <></>
+                    gridView ?
+                        <div className='flex justify-center   bottom-0'>
+                            <button className='text-3xl text-orange-600'
+                                onClick={() => handlePageChange(currentPage - 1)}
+                                disabled={currentPage === 1}
+                            >
+                                <FaArrowAltCircleLeft />
+                            </button>
+                            <span className='m-4 text-xl'> Page {currentPage} of {totalPages} </span>
+                            <button className='text-3xl text-orange-600'
+                                onClick={() => handlePageChange(currentPage + 1)}
+                                disabled={currentPage === totalPages}
+                            >
+                                <FaArrowAltCircleRight />
+                            </button>
+                        </div>
+                        : <></>
                 }
             </div>
             <Toaster />

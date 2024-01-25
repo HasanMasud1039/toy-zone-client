@@ -4,10 +4,11 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { AuthContext } from '../../Providers/AuthProvider';
 import useTitle from '../../Hook/Hook';
+import img1 from '../../assets/addt3.png';
 
 const AddToy = () => {
     const { user } = useContext(AuthContext);
-    const { navigate } = useNavigate();
+    const navigate = useNavigate();
     useTitle("Add Toy");
     const handleAddToy = event => {
         event.preventDefault();
@@ -50,20 +51,20 @@ const AddToy = () => {
                     confirmButtonText: 'Cool'
                 })
 
+                navigate('/home');
             })
-        navigate('/');
     }
 
     return (
-        <div>
+        <div className="h-full w-full" style={{ background: `url(${img1})`, backgroundSize: 'contain', backgroundPosition: 'center', backgroundRepeat: 'no-repeat' }}>
             {/* <Helmet>
                 <title>Toy Zone || Add Toy</title>
             </Helmet> */}
 
-            <h1 className='text-4xl uppercase font-serif text-center font-bold bg-gradient-to-b from-green-400 to-green-300 pt-4'>Add a toy</h1>
-            <div className="hero bg-gradient-to-t to-green-300 from-yellow-100">
+            <h1 className='text-2xl text-cyan-300 uppercase font-serif text-center font-bold pt-4'>Add a toy</h1>
+            <div className="hero">
                 <div className="hero-content py-8 md:w-[50%] w-full  flex-col lg:flex-row-reverse">
-                    <div className="card w-full  shadow-2xl  shadow-red-400 bg-base-400">
+                    <div className="card w-full shadow-2xl bg-zinc-200 bg-opacity-50">
                         <form onSubmit={handleAddToy}>
                             <div className="card-body ">
                                 <div className="form-control grid grid-cols-4">
@@ -74,7 +75,7 @@ const AddToy = () => {
                                 </div>
                                 <div className="form-control grid grid-cols-4">
                                     <label className="label col-span-1">
-                                        <span className="label-text text-lg font-semibold">Picture URL</span>
+                                        <span className="label-text text-lg font-semibold">Photo URL</span>
                                     </label>
                                     <input type="text" placeholder="Photo URL" name='picture' className="input input-bordered col-span-3" />
                                 </div>
@@ -105,11 +106,11 @@ const AddToy = () => {
                                     </label>
                                     <input type="number" placeholder="Price" name='price' className="input input-bordered col-span-3" />
                                 </div>
-                                <div className="form-control grid grid-cols-4">
+                                <div className="form-control grid grid-cols-4 hidden">
                                     <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Rating</span>
                                     </label>
-                                    <input type="number" placeholder="Rating Out of 5" name='rating' className="input input-bordered col-span-3" />
+                                    <input type="number" defaultValue={'3'} placeholder="Rating Out of 5" name='rating' className="input input-bordered col-span-3" />
                                 </div>
                                 <div className="form-control grid grid-cols-4">
                                     <label className="label col-span-1">
@@ -117,13 +118,13 @@ const AddToy = () => {
                                     </label>
                                     <input type="number" placeholder="Quantity" name='quantity' className="input input-bordered col-span-3" />
                                 </div>
-                                <div className="form-control grid grid-cols-4">
+                                <div className="form-control grid grid-cols-4 hidden">
                                     <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Seller Name</span>
                                     </label>
                                     <input type="text" value={user?.displayName} name='seller_name' className="input input-bordered col-span-3" />
                                 </div>
-                                <div className="form-control grid grid-cols-4">
+                                <div className="form-control grid grid-cols-4 hidden">
                                     <label className="label col-span-1">
                                         <span className="label-text text-lg font-semibold">Seller Email</span>
                                     </label>
@@ -137,7 +138,7 @@ const AddToy = () => {
                                 </div>
 
                                 <div className="form-control mt-6">
-                                    <button className="btn btn-warning activeBtn bg-amber-600 text-white font-bold">Add Toy</button>
+                                    <button className="btn btn-warning activeBtn bg-amber-400 text-white font-bold">Add Toy</button>
                                 </div>
                             </div>
                         </form>

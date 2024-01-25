@@ -8,6 +8,7 @@ import HelpKidBanner from "../HelpKidBanner/HelpKidBanner";
 import Featured from "../Featured/Featured";
 import ShopByCategory from "../ShopByCategory/ShopByCategory";
 import NewArraival from "../NewArrival/NewArraival";
+import SpecialOffer from "../SpecialOffer/SpecialOffer";
 
 const Home = () => {
     return (
@@ -16,6 +17,7 @@ const Home = () => {
                 <title>Home | Toy Zone</title>
             </Helmet>
             <Banner></Banner>
+            <SpecialOffer/>
             <ShopByCategory/>
             <Featured/>
             <NewArraival/>

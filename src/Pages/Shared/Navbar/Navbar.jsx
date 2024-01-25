@@ -25,8 +25,8 @@ const Navbar = () => {
     console.log(userLogin);
     return (
         <div className=''>
-            <div className='flex justify-between  md:px-8 pe-4'>
-                <div className=' md:ms-4 flex justify-between gap-4 w-fit' >
+            <div className='flex justify-between'>
+                <div className=' flex justify-between gap-4 w-fit' >
                     <div><img className='md:block hidden align-center h-16 md:mt-1 rounded-xl my-2' src={logo} /></div>
                     <div className='block md:hidden font-sans'><h4 className='py-2 text-xl font-serif'>Toy Zone</h4>
                     </div>
@@ -45,10 +45,10 @@ const Navbar = () => {
                 </div>
 
             </div>
-            <div className="navbar flex justify-evenly w-[99%] mx-auto space-x-4">
+            <div className="navbar flex justify-evenly mx-auto space-x-4">
 
                 <div className="">
-                    <div className="dropdown m-2">
+                    <div className="dropdown my-2">
                         <label tabIndex={0} className="lg:hidden">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
                         </label>
@@ -61,7 +61,7 @@ const Navbar = () => {
                             {/* <li className='font-semibold font-serif '><NavLink className={({isActive}) => isActive ? 'active' : ''}to='/blog'>Blog</NavLink></li> */}
                             {user?.email ? (<>
                                 <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to={`/mytoy/${user.email}`}>My Toys</NavLink></li>
-                                <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} onClick={handleLogout}>Logout</NavLink></li>
+                                <li className='font-semibold font-serif '><Link  onClick={handleLogout}>Logout</Link></li>
                             </>
                             ) : (
                                 <li className='font-semibold font-serif '><NavLink to="/login">Login</NavLink></li>
@@ -76,7 +76,7 @@ const Navbar = () => {
                         <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/category'>Category</NavLink></li>
                         <li className=''><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/alltoys'>All Toys</NavLink></li>
                         <li className=''><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/addtoy'>Add Toy</NavLink></li>
-                        <li className=''><NavLink className={({isActive}) => isActive ? 'active' : ''}to='/'>Blog</NavLink></li>
+                        <li className=''><NavLink className={({isActive}) => isActive ? 'active' : ''}to='/blog'>Blog</NavLink></li>
                         {/* <li className=''><a>My Toys</a></li> */}
                         {user?.email ? (
                             <li className='space-x-4'>
