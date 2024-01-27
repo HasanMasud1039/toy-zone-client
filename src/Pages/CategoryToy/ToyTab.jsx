@@ -23,7 +23,7 @@ const ToyTab = ({ items }) => {
                 className="mySwiper"
             >
                 <SwiperSlide>
-                    <div className='grid md:grid-cols-5 grid-cols-2 mt-8 gap-4'>
+                    <div className='grid md:grid-cols-5 grid-cols-2 mt-8 gap-4 animate_animated animate__backInDown'>
                         {
                             items.map(item => <ToyTabShow
                                 key={item._id}

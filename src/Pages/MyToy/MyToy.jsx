@@ -1,20 +1,52 @@
 import React, { useContext } from 'react';
 import Swal from 'sweetalert2';
-import { useLoaderData, useParams } from 'react-router-dom';
-import MyToyCard from './MyToyCard';
+import { useLoaderData } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { Helmet } from 'react-helmet';
 import DataTable, { createTheme } from 'react-data-table-component';
-import { FaCartPlus, FaTrashAlt } from 'react-icons/fa';
+import {FaTrashAlt } from 'react-icons/fa';
+import { useQuery } from '@tanstack/react-query';
+
 
 
 const MyToy = () => {
     const { user } = useContext(AuthContext);
-    const toys = useLoaderData();
-    console.log(toys);
-    const   handleRemoveToy = (product) => {
-        toast.success(`${product.name} added to cart.`, { position: 'top-right' });
-        console.log(product);
+    const { data: toys = [], refetch } = useQuery({
+        queryKey: ["email", user?.email],
+        queryFn: async () => 
+        fetch(`https://toy-zone-server-new.vercel.app/mytoys/${user?.email}`)
+        .then((res) => res.json(),
+      ),
+    });
+    
+    const handleRemoveToy = (id) => {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://toy-zone-server-new.vercel.app/toys/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+
     }
     const columns = [
         {
@@ -104,12 +136,9 @@ const MyToy = () => {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
 
                 </div>
-                // <button className='btn activeBtn bg-amber-600 btn-warning text-white md:mx-auto'>Details</button>
             )
         },
         {

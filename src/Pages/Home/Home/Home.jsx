@@ -1,6 +1,5 @@
 import Banner from "../Banner/Banner";
-import Reviews from "../../Reviews/Reviews";
-import CategoryToy from "../../CategoryToy/CategoryToy";
+import Reviews from "../Reviews/Reviews";
 import Gallery from "../Gallery/Gallery";
 import { Helmet } from "react-helmet";
 import FavoriteToy from "../FavouriteToy/FavoriteToy";
@@ -9,6 +8,8 @@ import Featured from "../Featured/Featured";
 import ShopByCategory from "../ShopByCategory/ShopByCategory";
 import NewArraival from "../NewArrival/NewArraival";
 import SpecialOffer from "../SpecialOffer/SpecialOffer";
+import ToyBox from "../ToyBox/ToyBox";
+import SpecialCollection from "../SpecialCollection/SpecialCollection";
 
 const Home = () => {
     return (
@@ -22,9 +23,11 @@ const Home = () => {
             <Featured/>
             <NewArraival/>
             <HelpKidBanner/>
+            <SpecialCollection/>
             <Gallery></Gallery>
             <FavoriteToy/>
-            <Reviews></Reviews>
+            <ToyBox/>
+            <Reviews/>
         </div>
     );
 };

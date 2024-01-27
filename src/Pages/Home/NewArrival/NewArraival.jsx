@@ -16,6 +16,8 @@ import img14 from '../../../assets/new/14.jpg'
 import img15 from '../../../assets/new/15.jpg'
 import img16 from '../../../assets/new/16.jpg'
 import toast from 'react-hot-toast';
+import AOS from'aos';
+import { useSpring } from '@react-spring/web';
 
 const NewArraival = () => {
 
@@ -126,14 +128,18 @@ const NewArraival = () => {
     const handleSeeMore = () => {
         setSliceNum(prevSliceNum => prevSliceNum + 8);
     };
-
     const handleSeeLess = () => {
         setSliceNum(prevSliceNum => prevSliceNum - 8);
     };
+    
     return (
-        <div className='bg-[#F5EEF8] md:py-4 py-2'>
+        <div className='bg-[#F5EEF8] md:py-4 py-2 animate__animated animate__slideIn'>
             <h1 className="text-center md:text-3xl text-xl my-8 w-4/12 mx-auto font-bold text-orange-600 uppercase border-y-4 border-fuchsia-700 py-4">New Arrivals</h1>
-            <div className='grid md:grid-cols-4 grid-cols-2 gap-1 space-y-2'>
+            <div
+            data-aos="zoom-in"
+            data-aos-easing="ease-out-cubic"
+            data-aos-duration="1500" 
+            className='grid md:grid-cols-4 grid-cols-2 gap-1 space-y-2'>
                 {newToys.slice(0, sliceNum).map((toy, index) => (
                     <div
                         key={index}

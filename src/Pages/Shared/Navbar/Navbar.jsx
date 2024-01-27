@@ -1,4 +1,3 @@
-// import React from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../../assets/tzL.png'
 import { useContext } from 'react';
@@ -7,9 +6,10 @@ import 'react-tabs/style/react-tabs.css';
 import { ToastContainer, toast } from 'react-toastify';
 import './Navbar.css/'
 import { FaCartPlus, FaHeart } from 'react-icons/fa';
+import useMyToys from '../../../Hook/useMyToys';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    console.log(user);
+    const mycart = useMyToys(user?.email);
 
     const handleLogout = () => {
         logOut()
@@ -19,12 +19,9 @@ const Navbar = () => {
                 toast('Successfully logout!')
             });
     };
-    const userLogin = user;
-    // const userLogin = JSON.parse(localStorage.getItem('user'));
-    // const {displayName, photoURL} = userLogin;
-    console.log(userLogin);
+
     return (
-        <div className=''>
+        <div>
             <div className='flex justify-between'>
                 <div className=' flex justify-between gap-4 w-fit' >
                     <div><img className='md:block hidden align-center h-16 md:mt-1 rounded-xl my-2' src={logo} /></div>
@@ -37,7 +34,6 @@ const Navbar = () => {
                 <div className='navbar-end w-28 flex items-center mr-8'>
                     {user ? (
                         <div className="navbar-end flex">
-                            {/* <p>{userLogin.displayName}</p> */}
                             <img src={user.photoURL} className='border-2 ms-8 w-12 h-12 rounded-full' />
                         </div>
                     ) : <></>
@@ -60,8 +56,8 @@ const Navbar = () => {
                             <li className='font-semibold font-serif '><NavLink to='/blog'>Blog</NavLink></li>
                             {/* <li className='font-semibold font-serif '><NavLink className={({isActive}) => isActive ? 'active' : ''}to='/blog'>Blog</NavLink></li> */}
                             {user?.email ? (<>
-                                <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to={`/mytoy/${user.email}`}>My Toys</NavLink></li>
-                                <li className='font-semibold font-serif '><Link  onClick={handleLogout}>Logout</Link></li>
+                                <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/myToy'>My Toys</NavLink></li>
+                                <li className='font-semibold font-serif '><Link onClick={handleLogout}>Logout</Link></li>
                             </>
                             ) : (
                                 <li className='font-semibold font-serif '><NavLink to="/login">Login</NavLink></li>
@@ -76,19 +72,16 @@ const Navbar = () => {
                         <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/category'>Category</NavLink></li>
                         <li className=''><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/alltoys'>All Toys</NavLink></li>
                         <li className=''><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/addtoy'>Add Toy</NavLink></li>
-                        <li className=''><NavLink className={({isActive}) => isActive ? 'active' : ''}to='/blog'>Blog</NavLink></li>
-                        {/* <li className=''><a>My Toys</a></li> */}
+                        <li className=''><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/blog'>Blog</NavLink></li>
                         {user?.email ? (
                             <li className='space-x-4'>
-                                <NavLink className={({ isActive }) => isActive ? 'active' : ''} to={`/mytoy/${user.email}`}><button className=' font-semibold font-serif '>My Toys</button></NavLink>
+                                <NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/myToy'><button className=' font-semibold font-serif '>My Toys</button></NavLink>
                                 <button className=" font-serif font-bold rounded-2xl  mx-2" onClick={handleLogout} >Logout</button>
                             </li>
                         ) : (
                             <li className="" ><NavLink to="/login">Login</NavLink></li>
                         )}
                     </ul>
-
-
                 </div>
 
                 <div className='flex md:gap-8 text-3xl  items-center'>
@@ -97,10 +90,11 @@ const Navbar = () => {
                         <p className='absolute right-[-8px] bottom-[-6px] text-white bg-amber-500 rounded-full border px-2 text-sm font-semibold'>8</p>
                     </span>
                     <span className='relative p-2'>
-                        <FaCartPlus className='text-white' />
-                        <p className='absolute right-[-8px] bottom-[-6px] text-white bg-amber-500 rounded-full border px-2 text-sm font-semibold'>8</p>
+                        <NavLink to='/cart'>
+                            <FaCartPlus className='text-white' />
+                            <p className='absolute right-[-8px] bottom-[-6px] text-white bg-amber-500 rounded-full border px-2 text-sm font-semibold'>{mycart.toys.length || 0}</p>
+                        </NavLink>
                     </span>
-
                 </div>
             </div>
 

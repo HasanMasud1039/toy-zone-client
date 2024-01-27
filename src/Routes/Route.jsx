@@ -12,6 +12,7 @@ import UpdateToy from "../Pages/Home/UpdateToy/UpdateToy";
 import PrivateRoute from "./PrivateRoute";
 import CategoryToy from "../Pages/CategoryToy/CategoryToy";
 import MyToy from "../Pages/MyToy/MyToy";
+import Cart from "../Pages/Cart/Cart";
 
 const router = createBrowserRouter([
   {
@@ -40,9 +41,8 @@ const router = createBrowserRouter([
         element: <UpdateToy></UpdateToy>
       },
       {
-        path: '/mytoy/:email',
+        path: '/mytoy',
         element: <MyToy></MyToy>,
-        loader: ({ params }) => fetch(`https://toy-zone-server-new.vercel.app/mytoys/${params.email}`),
       },
     ],
   },
@@ -71,6 +71,10 @@ const router = createBrowserRouter([
       {
         path: '/blog',
         element: <Blog></Blog>
+      },
+      {
+        path: '/cart',
+        element: <PrivateRoute><Cart/></PrivateRoute>
       },
     ]
   },

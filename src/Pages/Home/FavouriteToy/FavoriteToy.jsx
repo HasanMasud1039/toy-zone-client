@@ -31,9 +31,12 @@ const FavoriteToy = () => {
     return (
         <div className='md:pt-12 pt-8 bg-violet-50'>
             <h1 className="text-center md:text-3xl text-xl mt-4 w-4/12 mx-auto font-bold text-orange-600 uppercase border-y-4 border-fuchsia-700 py-4">Get Your Favorite Toys</h1>
-
             <div className='md:flex justify-between md:p-6 p-4 mt-8 md:mt-2'>
-                <div className='grid grid-cols-2 md:p-8 p-4 active gap-4 md:w-[45%] border md:h-[460px] md:space-y-2'>
+                <div
+                data-aos="fade-right"
+                data-aos-offset="300"
+                data-aos-easing="ease-in-sine"
+                className='grid grid-cols-2 md:p-8 p-4 active gap-4 md:w-[45%] border md:h-[460px] md:space-y-2'>
                     {
                         cardData.map(card =>
                             <div className='px-4 rounded-lg border-1 shadow-lg text-center flex flex-col items-center justify-center bg-white space-y-2'>
@@ -44,7 +47,11 @@ const FavoriteToy = () => {
                         )
                     }
                 </div>
-                <div className={`space-y-2 bg-cyan-500  md:mt-0 mt-6  md:w-[50%]`}>
+                <div
+                data-aos="fade-left"
+                data-aos-offset="300"
+                data-aos-easing="ease-in-sine"
+                className={`space-y-2 bg-cyan-500  md:mt-0 mt-6  md:w-[50%]`}>
                     <img src={img2} alt="" className='h-[100%] w-full rounded-tl-[300px] active shadow-2xl shadow-red-200 border-2' />
                 </div>
             </div>

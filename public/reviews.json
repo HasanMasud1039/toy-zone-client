@@ -25,20 +25,20 @@
         "name": "Mamun Hasan",
         "photo": "https://i.ibb.co/x1mV2Fy/Capture1-removebg-preview-removebg-preview-1.png",
         "details": "Excellent toy shopping destination! The website's layout is user-friendly, making it simple to find the perfect toy for any occasion. I appreciate the frequent discounts and deals too, which makes the prices even more attractive.",
-        "rating": 3
+        "rating": 4.5
     },
     {
         "_id": 5,
         "name": "Masum Hasan",
         "photo": "https://i.ibb.co/R2cML5W/MV5-BOWYz-Mzdk-Nj-At-NTU0-NS00-Yz-Vi-LWI3-NTMt-ZDc5-MTEz-OTA0-M2-I5-Xk-Ey-Xk-Fqc-Gde-QXVy-MTU4-MTM5.jpg",
         "details": "Excellent toy shopping destination! The website's layout is user-friendly, making it simple to find the perfect toy for any occasion. I appreciate the frequent discounts and deals too, which makes the prices even more attractive.",
-        "rating": 3
+        "rating": 4
     },
     {
         "_id": 6,
         "name": "Ema Hasan",
         "photo": "https://i.ibb.co/6r64tHN/hipwee-Emma-Watson.png",
         "details": "Excellent toy shopping destination! The website's layout is user-friendly, making it simple to find the perfect toy for any occasion. I appreciate the frequent discounts and deals too, which makes the prices even more attractive.",
-        "rating": 3
+        "rating": 3.5
     }
 ]

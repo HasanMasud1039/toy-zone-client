@@ -1,17 +1,31 @@
+import { useState } from 'react';
 import 'react-tabs/style/react-tabs.css';
 
 const ToyTabShow = ({ item }) => {
-    const { _id, picture, name, price, rating, details, subCategory, sellerName, sellerEmail, quantity } = item;
+    const [hoveredIndex, setHoveredIndex] = useState(null);
+    const {index, _id, picture, name, price, rating, details, subCategory, sellerName, sellerEmail, quantity } = item;
+    const handleAddCart = (item) =>{
+        console.log(item);
+    } 
     return (
-        <div className='rounded-lg active border-2'>
+        <div
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(null)}
+            className='rounded-lg active border-2'>
             <div className="card">
-                <div className="">
+                <div className="relative">
                     <img src={picture} className="rounded-t-xl shadow-red-200 shadow-lg h-56 w-56" />
+                    <button
+                            onClick={() => handleAddCart(item)}
+                            className={`h-8 w-[80%] bg-gradient-to-t from-amber-400 to-amber-600 rounded-lg text-white text-center p-1 hover:bg-green-500 hover:text-white transition-opacity duration-300 absolute bottom-0 left-1/2 transform -translate-x-1/2 ${hoveredIndex === index ? 'opacity-100' : 'opacity-0'}`}
+                        >
+                            Add to Cart
+                        </button>
                 </div>
                 <div className="card-body items-center text-black text-center">
                     <h2 className="card-title">{name}</h2>
-                    <p className='text-sm'>$ {price}</p>
-                    <label htmlFor={_id} className="activeBtn w-full px-4 bg-amber-600 py-1 rounded text-white">Details</label>
+                    <p className='text-lg font-bold text-[#FCAF09]'>$ {price}</p>
+                    <label htmlFor={_id} className="activeBtn w-full px-4 bg-fuchsia-600 hover:bg-violet-600 py-1 rounded text-white">Details</label>
 
                     {/* Put this part before </body> tag */}
                     <input type="checkbox" id={_id} className="modal-toggle" />
@@ -40,8 +54,6 @@ const ToyTabShow = ({ item }) => {
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
                 </div>
             </div>

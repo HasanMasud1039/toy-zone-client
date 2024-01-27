@@ -1,5 +1,6 @@
 import featuredImg from '../../../assets/feat/feat3.jpg'
 import { Link } from "react-router-dom";
+import AOS from 'aos';
 
 const Featured = () => {
     return (
@@ -8,7 +9,10 @@ const Featured = () => {
 
             <div className="md:flex justify-center items-center bg-slate-500 bg-opacity-50 pt-20 pb-12 md:px-32 px-6">
                 <div>
-                    <img className="" src={featuredImg} alt="" />
+                    <img data-aos="zoom-in"
+                    data-aos-easing="ease-out-cubic"
+                    data-aos-duration="1500" 
+                    className="" src={featuredImg} alt="" />
                 </div>
                 <div className="md:ml-10">
                     <p className='text-lg'>Oct 03, 2023</p>

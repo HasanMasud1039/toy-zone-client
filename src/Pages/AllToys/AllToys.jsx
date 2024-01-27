@@ -1,8 +1,7 @@
 // import React from 'react';
 import DataTable, { createTheme } from 'react-data-table-component';
-import { useLoaderData } from "react-router-dom";
-import { useEffect, useState } from "react";
-import useTitle from "../../Hook/Hook";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import { useContext, useEffect, useState } from "react";
 import { FaArrowAltCircleLeft, FaArrowAltCircleRight, FaCartPlus } from 'react-icons/fa';
 import { CiViewTable } from "react-icons/ci";
 import { MdOutlineGridView } from "react-icons/md";
@@ -10,10 +9,12 @@ import { Toaster, toast } from 'react-hot-toast';
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css'
 import { Helmet } from 'react-helmet';
-// import { Helmet } from "react-helmet-async";
+import Swal from 'sweetalert2';
+import { AuthContext } from '../../Providers/AuthProvider';
 
 const AllToys = () => {
     const toys = useLoaderData();
+    const { user } = useContext(AuthContext);
     const discountPercentage = 10;
     const [alltoy, setAllToy] = useState(toys);
     const [searchText, setSearchText] = useState("");
@@ -49,10 +50,68 @@ const AllToys = () => {
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
     };
+    const navigate = useNavigate();
 
-    const handleAddCart = (product) => {
-        toast.success(`${product.name} added to cart.`, { position: 'top-right' });
-        console.log(product);
+    const handleAddToCart = item => {
+        const { _id, name, category_id, details, picture, price, quantity, rating, sellerEmail, sellerName, subCategory} = item;
+        const newId = _id;
+        const email = user?.email;
+        const newItem = { newId,  name, category_id, details, picture, price, quantity, rating, sellerEmail, sellerName, subCategory, email };
+        console.log(newItem);
+        if (user) {
+            fetch("https://toy-zone-server-new.vercel.app/cart", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    // You may include additional headers if needed
+                },
+                body: JSON.stringify(newItem),
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! Status: ${response.status}`);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log(data);
+                    // toast.success("Your selected class was successfully added");
+                    if (data.insertedId) {
+                        Swal.fire({
+                            icon: "success",
+                            title: "Added to Cart successfully.",
+                            showConfirmButton: false,
+                            timer: 1500,
+                        });
+                    }
+                })
+                .catch(error => {
+                    console.error("Fetch error:", error);
+                    // Handle errors as needed
+                });
+            
+        }
+        else {
+            Swal.fire({
+                title: "Please Login!",
+                text: "You cannot select this class.",
+                icon: "error",
+                showConfirmButton: true,
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes',
+                cancelButtonText: 'No'
+            }).then((result) => {
+                if (result.isConfirmed) {
+
+                    navigate('/login');
+                }
+                else {
+                    navigate('/alltoys');
+                }
+            })
+        }
     }
 
     const columns = [
@@ -167,7 +226,7 @@ const AllToys = () => {
             name: <p>Add to Cart</p>,
             cell: (row) => (
                 <div className='mx-auto'>
-                    <button onClick={() => handleAddCart(row)} className=' p-2 active  md:mx-auto'><FaCartPlus className='text-3xl text-fuchsia-500' /> </button>
+                    <button onClick={() => handleAddToCart(row)} className=' p-2 active  md:mx-auto'><FaCartPlus className='text-3xl text-fuchsia-500' /> </button>
                 </div>
             )
         }
@@ -285,20 +344,19 @@ const AllToys = () => {
                         type="number"
                         placeholder="Min Price"
                         onChange={(e) => setMinPrice(e.target.value)}
-                        className="border text-black rounded-lg p-2 mr-2 shadow-xl"
+                        className="border text-black rounded-lg p-2 mr-2 shadow-xl w-full"
                     />
                     <input
                         type="number"
                         placeholder="Max Price"
                         onChange={(e) => setMaxPrice(e.target.value)}
-                        className="border text-black rounded-lg p-2 shadow-xl"
+                        className="border text-black rounded-lg p-2 shadow-xl w-full"
                     />
                 </div>
-                <div className='flex items-center  gap-4 text-lg'>
+                <div className='flex items-center justify-between px-4 md:px-2  gap-4 text-lg'>
                     <MdOutlineGridView onClick={() => setGridView(true)} className={gridView ? "text-green-500 text-3xl" : " text-3xl text-red-500"} />
                     <CiViewTable onClick={() => setGridView(false)} className={gridView ? "text-red-500 text-3xl" : " text-3xl text-green-500"} />
                 </div>
-
             </div>
             <div>
                 {
@@ -315,7 +373,7 @@ const AllToys = () => {
                         :
                         <div className="grid md:grid-cols-5 grid-cols-2 gap-4">
                             {currentObjects.map((product) => (
-                                <div key={product.id} className="relative border p-4 shadow-xl space-y-2 bg-gradient-to-b from-teal-100">
+                                <div key={product._id} className="relative border p-4 shadow-xl space-y-2 bg-gradient-to-b from-teal-100">
                                     {/*Modal Start*/}
                                     <label htmlFor={product._id} className=""><img className='w-full h-48 hover:scale-[110%]' src={product.picture} alt="" /></label>
                                     <input type="checkbox" id={product._id} className="modal-toggle" />
@@ -358,7 +416,7 @@ const AllToys = () => {
                                             readOnly
                                         />
                                     </div>
-                                    <button onClick={() => handleAddCart(product)} className="activeBtn bg-amber-600 flex-end rounded-lg w-full text-white text-center  p-1 mt-4 hover:bg-green-500 hover:text-white">
+                                    <button onClick={() => handleAddToCart(product)} className="activeBtn bg-fuchsia-600 flex-end rounded-lg w-full text-white text-center  p-1 mt-4 hover:bg-green-500 hover:text-white">
                                         Add to Cart
                                     </button>
                                 </div>

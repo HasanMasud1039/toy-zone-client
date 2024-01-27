@@ -1,3 +1,4 @@
+import { Parallax } from 'react-parallax';
 import './Gallery.css'
 
 const Gallery = () => {
@@ -52,13 +53,20 @@ const Gallery = () => {
         },
     ]
     return (
-        <div className=' p-4 space-y-6 bg-gradient-to-b to-base-200 from-cyan-100'>
+        <Parallax
+            blur={{ min: -50, max: 50 }}
+            bgImage='https://s.abcnews.com/images/Health/parents-children-playing-stock-gty-jef-181129_hpMain_16x9_1600.jpg'
+            bgImageAlt="the Product"
+            strength={-200}
+             className=' p-4 space-y-6 bg-gradient-to-b to-base-200 from-cyan-100'>
             <div className=' space-y-4 pb-6 h-[50%] w-full space-x-2'>
                 <h1 className="text-center md:text-3xl text-xl my-4 w-4/12 mx-auto font-bold text-orange-600 uppercase border-y-4 border-fuchsia-700 py-4">Our Top Sale Products</h1>
             </div>
-
-
-            <div className='row  grid grid-cols-2 md:grid-cols-4 md:gap-8 gap-2 md:mx-4'>
+            <div
+             data-aos="fade-up"
+             data-aos-easing="ease-out-cubic"
+             data-aos-duration="1500" 
+            className='row grid grid-cols-2 md:grid-cols-4 md:gap-8 gap-2 md:mx-4'>
                 {
                     topProducts.map(product =>
                         <div className=''>
@@ -75,7 +83,7 @@ const Gallery = () => {
                 }
 
             </div>
-        </div>
+        </Parallax>
     );
 };
 

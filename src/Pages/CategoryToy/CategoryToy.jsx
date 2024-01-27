@@ -19,7 +19,7 @@ const CategoryToy = () => {
     const Fire_Truck = toys.filter(item => item.subCategory === 'Fire-Truck');
     const Police_Car = toys.filter(item => item.subCategory === 'Police-Car');
     const Limo_Cars = toys.filter(item => item.subCategory === 'Limo-Cars');
-    console.log(loading);
+    
     return (
         <div className='py-2 text-xl bg-gradient-to-b from-base-200 to-cyan-100 '>
             <Helmet>
