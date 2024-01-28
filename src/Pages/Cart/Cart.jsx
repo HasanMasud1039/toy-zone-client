@@ -1,17 +1,50 @@
 import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../Providers/AuthProvider';
-import useMyToys from '../../Hook/useMyToys';
 import DataTable, { createTheme } from 'react-data-table-component';
+import Swal from 'sweetalert2';
+import useCart from '../../Hook/useCart';
+import { FaClock, FaShoppingBag, FaTag, FaTrashAlt, FaTruck, FaWallet } from 'react-icons/fa';
 
 const Cart = () => {
     const { user } = useContext(AuthContext);
-    const cart = (useMyToys(user?.email))?.toys;
+    const [cart, refetch] = useCart();
     const [itemCounts, setItemCounts] = useState({});
     const discountPercentage = 10;
 
     const removeFromCart = (id) => {
-        console.log(id);
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                fetch(`https://toy-zone-server-new.vercel.app/cart/${id}`, {
+                    method: 'DELETE'
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.deletedCount > 0) {
+                            refetch();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    })
+            }
+        })
+
     }
+    const [isChecked, setChecked] = useState(false);
+
+    const handleCheckboxChange = () => {
+        setChecked(!isChecked);
+    };
 
     const handleCountPlus = (index) => {
         setItemCounts((prevCounts) => {
@@ -52,14 +85,14 @@ const Cart = () => {
 
     const columns = [
         {
-            name: <p className="md:mx-auto">#</p>,
+            // name: <p className="md:mx-auto">#</p>,
             selector: (row, index) => <div className=' mx-2'>{index + 1}</div>,
             // sortable: true,
             width: '8%',
         },
         {
-            name: <p className="md:mx-auto">Photo</p>,
-            // width: '17%',
+            // name: <p className="md:mx-auto">Photo</p>,
+            width: '25%',
             cell: (row) => (
 
                 <div className="md:mx-auto ">
@@ -68,75 +101,82 @@ const Cart = () => {
             )
         },
         {
-            name: <p className="md:mx-auto">Name & Category</p>,
-            width: '18%',
+            // name: <p className="">Name</p>,
+            width: '25%',
             cell: (row) => (
-                <div className='mx-auto text-center space-y-2'>
-                    <p className="text-semibold text-white md:mx-auto">{row.name}</p>
-                    {/* <p className="text-sm text-white md:mx-auto">{row.subCategory}</p> */}
+                <div className='space-y-2'>
+                    <p className="font-semibold md:mx-auto">{row.name}</p>
+                    <p className=" md:mx-auto "><span className='line-through me-2'>${row.price}</span> ${((parseFloat(row.price) - (parseFloat(row.price) * parseFloat(discountPercentage) / 100))).toFixed(2)}</p>
 
                 </div>
             )
         },
+        // {
+        //     name: <p className="md:mx-auto">Price ($)</p>,
+        //     sortable: true,
+        //     // width: '10%',
+        //     cell: (row) => (
+        //         <p className="font-bold md:mx-auto text-center">$ {row.price}</p>
+        //     )
+        // },
+        // {
+        //     name: <p className="">Discount</p>,
+        //     sortable: true,
+        //     width: '10%',
+        //     cell: (row) => (
+        //         <p className=''>10%</p>
+        //     )
+        // },
         {
-            name: <p className="md:mx-auto">Price ($)</p>,
+            // name: <p className="">Quantity</p>,
             sortable: true,
-            // width: '10%',
+            width: '30%',
             cell: (row) => (
-                <p className="font-bold md:mx-auto text-center">$ {row.price}</p>
-            )
-        },
-        {
-            name: <p className="md:mx-auto text-center">Discount (%)</p>,
-            sortable: true,
-            // width: '12%',
-            cell: (row) => (
-                <p className='md:mx-auto'>10%</p>
-            )
-        },
-        {
-            name: <p className="md:mx-auto">Quantity</p>,
-            sortable: true,
-            // width: '10%',
-            cell: (row) => (
-                <div className='md:mx-auto'>
-                    <button
-                        onClick={() => handleCountMinus(row._id)}
-                        className='rounded-[40%] w-8 bg-[#5207DE] text-2xl font-bold text-white'
-                    >
-                        -
-                    </button>
-                    {' '}
-                    {itemCounts[row._id] || 1}{' '}
-                    <button
-                        onClick={() => handleCountPlus(row._id)}
-                        className='rounded-[40%] w-8 bg-[#5207DE] text-2xl font-bold text-white'
-                    >
-                        +
-                    </button>
+                <div className='space-y-2'>
+                    <p className='text-center border-b pb-2 font-bold'>
+                        $ {((parseFloat(row.price) - (parseFloat(row.price) * parseFloat(discountPercentage) / 100)) * (itemCounts[row._id] || 1)).toFixed(2)}
+                    </p>
+                    <div className='md:mx-auto'>
+                        <button
+                            onClick={() => handleCountMinus(row._id)}
+                            className=' w-8 active rounded hover:bg-amber-100 hover:text-black text-2xl font-bold text-white'
+                        >
+                            -
+                        </button>
+                        <span className='px-4'>
+
+                            {itemCounts[row._id] || 1}
+                        </span>
+                        <button
+                            onClick={() => handleCountPlus(row._id)}
+                            className='rounded active w-8 text-2xl font-bold text-black hover:bg-amber-100 hover:text-black'
+                        >
+                            +
+                        </button>
+                    </div>
                 </div>
             )
         },
+        // {
+        //     name: <p className="md:mx-auto">Subtotal</p>,
+        //     sortable: true,
+        //     // width: '1%',
+        //     cell: (row) => (
+        //         <p className='md:mx-auto'>
+        //             {((parseFloat(row.price) - (parseFloat(row.price) * parseFloat(discountPercentage) / 100)) * (itemCounts[row._id] || 1)).toFixed(2)}
+        //         </p>
+        //     )
+        // },
         {
-            name: <p className="md:mx-auto">Price</p>,
-            sortable: true,
-            // width: '1%',
-            cell: (row) => (
-                <p className='md:mx-auto'>
-                    {((parseFloat(row.price) - (parseFloat(row.price) * parseFloat(discountPercentage) / 100)) * (itemCounts[row._id] || 1)).toFixed(2)}
-                </p>
-            )
-        },
-        {
-            name: <p className="md:mx-auto">Action</p>,
-            // width: '15%',
+            // name: <p className="md:mx-auto">Action</p>,
+            width: '8%',
             cell: (row) => (
                 <div className='mx-auto text-black'>
                     <button
-                        onClick={() => removeFromCart(item._id)}
-                        className='bg-red-500 text-white p-2 rounded-lg'
+                        onClick={() => removeFromCart(row._id)}
+                        className='text-red-600 p-2 rounded-lg'
                     >
-                        Remove
+                        <FaTrashAlt className='md:text-xl text-lg'/>
                     </button>
 
                 </div>
@@ -159,10 +199,11 @@ const Cart = () => {
         },
         headCells: {
             style: {
-                padding: '14px',
-                backgroundColor: 'lightgray',
-                fontSize: '16px',
-                fontWeight: 'semibold'
+                display: 'none',
+                // padding: '14px',
+                // backgroundColor: 'lightgray',
+                // fontSize: '16px',
+                // fontWeight: 'semibold'
             },
         },
         cells: {
@@ -210,11 +251,11 @@ const Cart = () => {
     };
     createTheme('solarized', {
         text: {
-            primary: '#268bd2',
+            primary: 'black',
             secondary: '#2aa198',
         },
         background: {
-            default: '#002b36',
+            default: '#FBEEFF',
         },
         context: {
             background: '#cb4b16',
@@ -238,28 +279,110 @@ const Cart = () => {
     };
 
     return (
-        <div>
-            <div className='flex justify-evenly bg-[#032FB8] text-white p-4'>
-                <p className=' text-xl space-x-4'>
-                    Total Amount: <span className='font-bold'>$ {total}</span>{' '}
-                </p>
-                <p className=' text-xl space-x-4'>
-                    After Discount: <span className='font-bold'>$ {totalPay}</span>{' '}
-                </p>
-                <button className='px-4 py-2 activeBtn font-semibold hover:bg-yellow-500 text-white rounded-lg'>
-                    PAY
-                </button>
+        <div className='md:flex gap-4'>
+            <div className='md:w-[60%]'>
+                <h1 className='py-2 px-4 font-semibold bg-yellow-400 text-xl flex gap-4 items-center'><FaShoppingBag /> Cart Items</h1>
+                <DataTable
+                    columns={columns}
+                    data={cart}
+                    noTableHead
+                    customStyles={customStyles}
+                    theme="solarized"
+                    // pagination
+                    // paginationComponentOptions={paginationComponentOptions}
+                    highlightOnHover
+                />
             </div>
+            <div className='md:w-[40%]'>
+                <div className='border rounded-lg bg-[#FBEEFF] mb-2'>
+                    <h1 className='py-2 px-4 font-semibold bg-yellow-400 text-xl flex gap-4 items-center'><FaTag /> Coupon</h1>
+                    <div className='py-4 px-2 space-x-4'>
+                        <input className='border h-8 w-[70%] rounded px-4 shadow' placeholder='Coupon Code' type="text" />
+                        <button className='rounded py-1 px-4 w-[25%] activeBtn hover:bg-green-500  bg-amber-500 text-white font-bold'>Apply</button>
+                    </div>
+                </div>
+                <div className='border rounded-lg bg-[#FBEEFF] mb-2'>
+                    <h1 className='py-2 px-4 font-semibold bg-yellow-400 text-xl flex gap-4 items-center'><FaTruck /> Delivery Location</h1>
+                    <div className='py-4 px-2 space-x-4'>
+                        <input className='border h-8 w-[70%] rounded px-4' placeholder='Address' type="text" />
+                        <button className='rounded py-1 px-4 w-[25%] border shadow activeBtn hover:bg-green-500  bg-amber-500 text-white font-bold'>Add</button>
+                    </div>
+                </div>
+                <div className='border rounded-lg bg-[#FBEEFF] mb-2'>
+                    <h1 className='py-2 px-4 font-semibold bg-yellow-400 text-xl flex gap-4 items-center'><FaWallet /> Payment Method</h1>
+                    <div className='py-4 px-2 flex justify-between gap-4'>
+                        <div className='w-full flex items-center gap-4 font-semibold'>
+                            <input type="radio" name="radio-1" className="radio-xs" checked />Online Payment
+                        </div>
+                        <div className='w-full flex items-center gap-4 font-semibold'>
+                            <input type="radio" name="radio-1" className="radio-xs" /> Cash on Delivery
+                        </div>
+                    </div>
+                </div>
+                <div className='border rounded-lg bg-[#FBEEFF] mb-2'>
+                    <h1 className='py-2 px-4 font-semibold bg-yellow-400 text-xl flex gap-4 items-center'><FaClock /> Expected Delivery Date & Time</h1>
+                    <div className='py-4 px-2 flex justify-between gap-4'>
+                        <div className='w-full text-center font-semibold'>
+                            <input type="date" name="date" className="" />
+                        </div>
+                        <div className='w-full text-center font-semibold'>
+                            <input type="time" name="time" className="" />
+                        </div>
+                    </div>
+                </div>
+                <hr />
+                <div className='p-4 bg-[#FBEEFF] mb-2'>
+                    <div className="flex flex-col space-y-4 mb-2">
+                        <div className="flex justify-between px-2">
+                            <p>Total Price:</p>
+                            <p className="font-bold">$ {total}</p>
+                        </div>
+                        <div className="flex justify-between px-2">
+                            <p>Discount:</p>
+                            <p className="font-bold">$ {(total - totalPay).toFixed(2)}</p>
+                        </div>
+                        <div className="flex justify-between px-2">
+                            <p>Price After Discount:</p>
+                            <p className="font-bold">$ {totalPay}</p>
+                        </div>
+                        <div className="flex justify-between px-2">
+                            <p>Coupon Discount:</p>
+                            <p className="font-bold">$ 00</p>
+                        </div>
+                        <div className="flex justify-between px-2">
+                            <p>VAT Amount:</p>
+                            <p className="font-bold">$ {(totalPay * 0.05).toFixed(2)}</p>
+                        </div>
+                        <div className="flex justify-between px-2">
+                            <p>Delivery Charge:</p>
+                            <p className="font-bold">$ 6</p>
+                        </div>
+                        <div className="flex justify-between bg-zinc-300 p-2">
+                            <p className='font-bold text-lg'>Total</p>
+                            <p className="font-bold text-lg">$ {(parseFloat(totalPay) + parseFloat(totalPay * 0.05) + 6).toFixed(2)}</p>
+                        </div>
+                    </div>
+                    <hr />
+                    <div className='p-4 text-center'>
+                        <div className='my-auto font-semibold'>
+                            <input
+                                type="checkbox"
+                                className="checkbox"
+                                checked={isChecked}
+                                onChange={handleCheckboxChange}
+                            />{' '}
+                            I accept the <span className='text-blue-500'>Terms & Conditions</span>
+                        </div>
+                    </div>
 
-            <DataTable
-                columns={columns}
-                data={cart}
-                customStyles={customStyles}
-                theme="solarized"
-                pagination
-                paginationComponentOptions={paginationComponentOptions}
-                highlightOnHover
-            />
+                    <button
+                        className={`px-4 py-2 activeBtn font-semibold ${!isChecked ? 'opacity-50': ''} bg-yellow-500 rounded-lg uppercase w-full`}
+                        disabled={!isChecked}
+                    >
+                        Confirm Order
+                    </button>
+                </div>
+            </div>
         </div>
     );
 };

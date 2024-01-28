@@ -28,7 +28,6 @@ const Login = () => {
         const form = event.target;
         const email = form.email.value;
         const password = form.password.value;
-        console.log(email, password);
         loginUser(email, password)
             .then(result => {
                 const loggedUser = result.user;
@@ -70,7 +69,7 @@ const Login = () => {
                         <h1 className="text-2xl px-4 py-2 text-center text-white font-bold uppercase">Sign In</h1>
                     </div>
                 <div className="hero-content  w-full flex-col space-y-2">
-                    <form  onSubmit={handleLogin} className=" bg-slate-500 bg-opacity-50 active pb-8">
+                    <form  onSubmit={handleLogin} className=" bg-slate-500 bg-opacity-50  pb-8">
                         <div className="card w-full">
                             <div className="card-body">
                                 <div className="form-control">

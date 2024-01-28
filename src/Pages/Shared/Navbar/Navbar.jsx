@@ -3,26 +3,30 @@ import logo from '../../../assets/tzL.png'
 import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 import 'react-tabs/style/react-tabs.css';
-import { ToastContainer, toast } from 'react-toastify';
 import './Navbar.css/'
 import { FaCartPlus, FaHeart } from 'react-icons/fa';
-import useMyToys from '../../../Hook/useMyToys';
+import useCart from '../../../Hook/useCart';
+import toast from 'react-hot-toast';
+import { ToastContainer } from 'react-toastify';
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const mycart = useMyToys(user?.email);
+    const [cart] = useCart();
 
     const handleLogout = () => {
         logOut()
-            .then()
-            .catch((err) => {
-                console.log(err);
-                toast('Successfully logout!')
-            });
-    };
+          .then(() => {
+            // Code to execute after successful logout
+            localStorage.removeItem('TotalPrice');
+            toast.success('Successfully logout!');
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
 
     return (
-        <div>
-            <div className='flex justify-between'>
+        <div className=''>
+            <div className='flex justify-between bg-transparent w-full'>
                 <div className=' flex justify-between gap-4 w-fit' >
                     <div><img className='md:block hidden align-center h-16 md:mt-1 rounded-xl my-2' src={logo} /></div>
                     <div className='block md:hidden font-sans'><h4 className='py-2 text-xl font-serif'>Toy Zone</h4>
@@ -57,7 +61,7 @@ const Navbar = () => {
                             {/* <li className='font-semibold font-serif '><NavLink className={({isActive}) => isActive ? 'active' : ''}to='/blog'>Blog</NavLink></li> */}
                             {user?.email ? (<>
                                 <li className='font-semibold font-serif '><NavLink className={({ isActive }) => isActive ? 'active' : ''} to='/myToy'>My Toys</NavLink></li>
-                                <li className='font-semibold font-serif '><Link onClick={handleLogout}>Logout</Link></li>
+                                <li className='font-semibold font-serif 'onClick={handleLogout}>Logout</li>
                             </>
                             ) : (
                                 <li className='font-semibold font-serif '><NavLink to="/login">Login</NavLink></li>
@@ -84,15 +88,15 @@ const Navbar = () => {
                     </ul>
                 </div>
 
-                <div className='flex md:gap-8 text-3xl  items-center'>
-                    <span className='relative p-2'>
+                <div className='flex md:gap-8 text-3xl  items-center fixed z-10 md:right-32 right-3'>
+                    {/* <span className='relative p-2'>
                         <FaHeart className='text-red-500' />
                         <p className='absolute right-[-8px] bottom-[-6px] text-white bg-amber-500 rounded-full border px-2 text-sm font-semibold'>8</p>
-                    </span>
-                    <span className='relative p-2'>
+                    </span> */}
+                    <span className='relative py-4 px-2 me-[-10px] bg-orange-500 rounded-l-full shadow-xl border'>
                         <NavLink to='/cart'>
                             <FaCartPlus className='text-white' />
-                            <p className='absolute right-[-8px] bottom-[-6px] text-white bg-amber-500 rounded-full border px-2 text-sm font-semibold'>{mycart.toys.length || 0}</p>
+                            <p className='absolute right-0 bottom-[-6px] text-white bg-fuchsia-600 rounded-l-full border px-2 text-sm font-semibold'>{cart.length || 0}</p>
                         </NavLink>
                     </span>
                 </div>
